@@ -38,3 +38,4 @@
 - [x] Exigir confirmación y registrar persistentemente las acciones del agente local
 - [x] Ejecutar una prueba local que modifique código existente y valide una aserción concreta
 - [x] Verificar el backend compatible con llama.cpp o documentarlo como no validado
+- [ ] Publicar el proyecto AION en un repositorio privado de GitHub
