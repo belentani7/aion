@@ -16,7 +16,7 @@ describe("AION security contracts", () => {
     const dashboard = await appRouter.createCaller(ctx).aion.dashboard();
     const terminal = dashboard.tools.find(tool => tool.name === "terminal");
     expect(terminal?.riskLevel).toBe("high");
-    expect(terminal?.status).toBe("not_implemented");
+    expect(terminal?.status).toBe("available");
     expect(terminal?.permissions).toContain("workspace.exec");
   });
 });

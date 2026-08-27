@@ -1,30 +1,30 @@
 # Project TODO
 
 - [x] Panel de control con estado de modelo, workspace, permisos, tareas y registros
-- [ ] Workspace aislado por proyecto e importación autorizada desde ruta de servidor o URL Git
+- [x] Workspace aislado por proyecto e importación autorizada desde ruta de servidor o URL Git
 - [x] Inspección de estructura, dependencias, puntos de entrada, riesgos y pendientes
 - [x] Adaptador local para Ollama/llama.cpp con comprobación de disponibilidad
 - [x] Selección por tipo de tarea y fallbacks explícitos sin proveedor de pago automático
 - [x] Registro común de filesystem, terminal, Git y tests con esquemas, permisos, riesgo y resultados
-- [ ] Ejecutor seguro limitado al workspace, red cerrada por defecto y redacción de secretos
-- [ ] Puertas de aprobación para operaciones de riesgo
+- [x] Ejecutor seguro limitado al workspace, red cerrada por defecto y redacción de secretos
+- [x] Puertas de aprobación para operaciones de riesgo
 - [x] Agente básico con plan verificable, ejecución restringida y estados NOT IMPLEMENTED
-- [ ] Flujo AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
-- [ ] Persistencia de proyectos, tareas, aprobaciones, historial y memoria de sesión
+- [x] Flujo AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
+- [x] Persistencia de proyectos, tareas, aprobaciones, historial y memoria de sesión
 - [x] Integración LLM administrada opcional y desactivada por defecto
 - [x] Pruebas unitarias para router de modelos, permisos y registro de herramientas
-- [ ] Verificación de extremo a extremo del flujo de auditoría
+- [x] Verificación de extremo a extremo del flujo de auditoría
 - [x] Documentación de arquitectura, modelos, herramientas, seguridad, modo local y agentes
 - [x] Verificación visual responsive y corrección de errores
 - [x] Implementar entidad y estado de tareas y mostrarlo en dashboard
-- [ ] Completar importación Git autorizada con aprobación y ejecución real
+- [x] Completar importación Git autorizada con aprobación y ejecución real
 - [x] Añadir interfaz ModelProvider y adaptador llama.cpp
 - [x] Implementar routing por tipo de tarea y fallback explícito
-- [ ] Crear ejecutor real con restricciones de comandos, red OFF y redacción de secretos
-- [ ] Completar resolución de aprobaciones
-- [ ] Implementar agente básico con planner verificable
-- [ ] Ampliar AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
-- [ ] Añadir persistencia real de tareas y uso de memoria de sesión
+- [x] Crear ejecutor real con restricciones de comandos, red OFF y redacción de secretos
+- [x] Completar resolución de aprobaciones
+- [x] Implementar agente básico con planner verificable
+- [x] Ampliar AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
+- [x] Añadir persistencia real de tareas y uso de memoria de sesión
 - [x] Escribir tests unitarios reales para model router, permisos y tool registry
 - [x] Crear docs faltantes: SECURITY.md, LOCAL_MODE.md, AGENTS.md
 - [x] Hacer verificación responsive en móvil y registrar correcciones
