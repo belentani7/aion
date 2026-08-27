@@ -28,3 +28,13 @@
 - [x] Escribir tests unitarios reales para model router, permisos y tool registry
 - [x] Crear docs faltantes: SECURITY.md, LOCAL_MODE.md, AGENTS.md
 - [x] Hacer verificación responsive en móvil y registrar correcciones
+- [x] Auditar CPU, RAM, almacenamiento y runtimes locales disponibles
+- [x] Instalar y configurar un servidor de modelos local sin dependencia de API de pago
+- [x] Sustituir las rutas de inferencia administradas por un gateway local compatible con Ollama o llama.cpp
+- [x] Implementar un agente de terminal real con permisos, confirmaciones y registro persistente
+- [x] Ejecutar una prueba de generación, modificación y validación de código con un modelo local
+- [x] Documentar requisitos de hardware, instalación local y límites de capacidad
+- [x] Conectar AIOND al camino de inferencia real de la aplicación sin usar Forge
+- [x] Exigir confirmación y registrar persistentemente las acciones del agente local
+- [x] Ejecutar una prueba local que modifique código existente y valide una aserción concreta
+- [x] Verificar el backend compatible con llama.cpp o documentarlo como no validado

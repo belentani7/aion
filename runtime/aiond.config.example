@@ -1,0 +1,5 @@
+# Copy these values into your local shell or systemd override; do not commit secrets.
+AION_PORT=8088
+AION_OLLAMA_URL=http://127.0.0.1:11434
+# AION_OLLAMA_MODEL=qwen2.5-coder:7b
+AION_LLAMA_CPP_URL=http://127.0.0.1:8080
