@@ -1,26 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AION</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#020204;--gold:#f59e0b;--amber:#fbbf24;--text:#e2e8f0;--muted:#64748b;--glass:rgba(255,255,255,.02)}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none}
+::selection{background:var(--gold);color:#000}
+.cursor{position:fixed;width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:transform .15s}
+.cursor.active{transform:scale(3)}
+.grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>AION — Autonomous Development Intelligence</title>    
-    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
-  </head>
+/* MATRIX RAIN BG */
+.matrix-bg{position:fixed;inset:0;z-index:0;overflow:hidden;opacity:.06}
+.matrix-col{position:absolute;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);writing-mode:vertical-rl;animation:matDrop linear infinite}
+@keyframes matDrop{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
-  </body>
+.loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.loader-text{font-size:clamp(4rem,12vw,10rem);font-weight:700;color:var(--gold);letter-spacing:-6px;font-family:'JetBrains Mono',monospace}
+.loader-sub{font-size:.6rem;letter-spacing:8px;color:var(--muted);margin-top:8px;text-transform:uppercase}
 
+nav{position:fixed;top:0;width:100%;z-index:100;padding:24px 48px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference}
+.nav-logo{font-size:1.5rem;font-weight:700;letter-spacing:-2px;font-family:'JetBrains Mono',monospace;color:var(--gold)}
+.nav-menu{display:flex;gap:40px}
+.nav-menu a{color:var(--text);font-size:.7rem;text-transform:uppercase;letter-spacing:4px;text-decoration:none;font-family:'JetBrains Mono',monospace}
+.nav-menu a:hover{color:var(--gold)}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:8px;color:var(--gold);margin-bottom:32px;font-family:'JetBrains Mono',monospace}
+.hero-title{font-size:clamp(3.5rem,10vw,10rem);font-weight:700;line-height:.8;letter-spacing:-8px;margin-bottom:32px}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .word{display:inline-block;transform:translateY(120%)}
+.hero-sub{font-size:1.15rem;color:var(--muted);max-width:480px;margin:0 auto 48px;font-weight:300;line-height:1.7}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;padding:16px 40px;border:1px solid rgba(245,158,11,.3);color:var(--text);text-decoration:none;font-size:.75rem;text-transform:uppercase;letter-spacing:4px;position:relative;overflow:hidden;font-family:'JetBrains Mono',monospace;transition:.6s}
+.hero-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:.6s cubic-bezier(.23,1,.32,1)}
+.hero-cta:hover::before{transform:translateX(0)}
+.hero-cta:hover{color:#000}
+.hero-cta span{position:relative;z-index:1}
+
+.terminal-bar{padding:20px 0;border-top:1px solid rgba(245,158,11,.1);border-bottom:1px solid rgba(245,158,11,.1);overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold)}
+.terminal-scroll{display:flex;gap:60px;animation:termScroll 45s linear infinite;white-space:nowrap}
+.terminal-scroll span{flex-shrink:0;opacity:.6}
+@keyframes termScroll{to{transform:translateX(-50%)}}
+
+.section{padding:160px 48px;position:relative;z-index:1}
+.section-num{font-size:.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+.section-heading{font-size:clamp(2.5rem,5vw,5rem);font-weight:700;letter-spacing:-3px;line-height:1;margin-bottom:24px;max-width:700px}
+.section-body{font-size:1.1rem;color:var(--muted);max-width:500px;line-height:1.8;font-weight:300}
+
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:80px;background:rgba(245,158,11,.03)}
+.agent-cell{background:var(--bg);padding:48px;border:1px solid rgba(245,158,11,.05);transition:.4s;position:relative}
+.agent-cell:hover{border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.02)}
+.agent-cell::before{content:attr(data-id);position:absolute;top:12px;right:16px;font-size:.55rem;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:2px;opacity:.5}
+.agent-cell h3{font-size:1.2rem;font-weight:600;letter-spacing:-1px;margin-bottom:12px}
+.agent-cell p{color:var(--muted);font-size:.85rem;line-height:1.7}
+
+.arch{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);text-align:center;padding:80px 48px;border:1px solid rgba(245,158,11,.05);margin:80px 48px;line-height:2.2;opacity:.7;white-space:pre;overflow-x:auto}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;padding:0 48px;margin:120px 0}
+.stat-block{padding:60px 40px;text-align:center;border:1px solid rgba(245,158,11,.05)}
+.stat-val{font-size:clamp(2rem,4vw,3.5rem);font-weight:700;letter-spacing:-2px;color:var(--gold);font-family:'JetBrains Mono',monospace}
+.stat-lbl{color:var(--muted);font-size:.6rem;text-transform:uppercase;letter-spacing:3px;margin-top:12px;font-family:'JetBrains Mono',monospace}
+
+.final-cta{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:48px;position:relative;z-index:1}
+.final-cta h2{font-size:clamp(3rem,8vw,8rem);font-weight:700;letter-spacing:-5px;line-height:.85;margin-bottom:48px}
+.final-cta h2 em{font-style:normal;color:var(--gold)}
+
+footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justify-content:space-between;font-size:.6rem;color:var(--muted);font-family:'JetBrains Mono',monospace;position:relative;z-index:1}
+.magnetic{display:inline-block;transition:transform .3s cubic-bezier(.23,1,.32,1)}
+@media(max-width:768px){nav{padding:16px 24px}.nav-menu{display:none}.section{padding:80px 24px}.agent-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr);padding:0 24px}.arch{margin:40px 24px;font-size:.55rem}footer{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+
+<div class="loader">
+  <div class="loader-text">AION</div>
+  <div class="loader-sub">Autonomous Intelligence Orchestration Network</div>
+</div>
+
+<div class="cursor"></div>
+<div class="grain"></div>
+
+<div class="matrix-bg" id="matrixBg"></div>
+
+<nav>
+  <div class="nav-logo magnetic">AION</div>
+  <div class="nav-menu">
+    <a href="#agents" class="magnetic">Agents</a>
+    <a href="#arch" class="magnetic">Architecture</a>
+    <a href="#deploy" class="magnetic">Deploy</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">AI Agent Workforce</div>
+    <h1 class="hero-title">
+      <span class="line"><span class="word">Deploy</span></span>
+      <span class="line"><span class="word">intelligence</span></span>
+    </h1>
+    <p class="hero-sub">Orchestrate autonomous AI agents for sales, support, research, compliance, and ops. Human oversight. Machine speed. Enterprise scale.</p>
+    <a href="#" class="hero-cta magnetic"><span>Deploy agents →</span></a>
+  </div>
+</section>
+
+<div class="terminal-bar">
+  <div class="terminal-scroll">
+    <span>[AGENT-07] Lead qualified → pipeline $42K</span>
+    <span>[AGENT-12] Support ticket resolved → 0.3s</span>
+    <span>[AGENT-03] Compliance report generated → SOC2</span>
+    <span>[AGENT-19] Research digest → 847 sources</span>
+    <span>[AGENT-01] Outreach campaign → 23% reply rate</span>
+    <span>[ORCHESTRATOR] 12M tasks/month · 97.8% accuracy</span>
+    <span>[AGENT-07] Lead qualified → pipeline $42K</span>
+    <span>[AGENT-12] Support ticket resolved → 0.3s</span>
+    <span>[AGENT-03] Compliance report generated → SOC2</span>
+    <span>[AGENT-19] Research digest → 847 sources</span>
+    <span>[AGENT-01] Outreach campaign → 23% reply rate</span>
+    <span>[ORCHESTRATOR] 12M tasks/month · 97.8% accuracy</span>
+  </div>
+</div>
+
+<section class="section" id="agents">
+  <div class="section-num">01 — Agent Workforce</div>
+  <h2 class="section-heading">AI agents that do real work, not demos</h2>
+  <p class="section-body">Not chatbots. Autonomous agents that research, decide, execute, and learn. With human-in-the-loop when it matters. Your workforce, multiplied.</p>
+
+  <div class="agent-grid">
+    <div class="agent-cell" data-id="AGT-001"><h3>Multi-Agent Orchestration</h3><p>Deploy swarms of specialists. Sales finds leads, research qualifies, outreach engages. Coordinated autonomy.</p></div>
+    <div class="agent-cell" data-id="AGT-002"><h3>Workflow Automation</h3><p>Visual builder. Connect agents to Slack, Salesforce, Jira, email, databases. 200+ integrations. Zero code.</p></div>
+    <div class="agent-cell" data-id="AGT-003"><h3>Human-in-the-Loop</h3><p>Configurable approval gates. Agents escalate above confidence threshold. Full audit trail. Your rules.</p></div>
+    <div class="agent-cell" data-id="AGT-004"><h3>Agent Analytics</h3><p>Real-time: tasks completed, accuracy, cost per task, ROI. Know exactly what your AI workforce produces.</p></div>
+    <div class="agent-cell" data-id="AGT-005"><h3>Enterprise Security</h3><p>SOC2, GDPR. Role-based access, encryption, sandboxed execution. Your data never trains models.</p></div>
+    <div class="agent-cell" data-id="AGT-006"><h3>Custom Agent Builder</h3><p>Natural language instructions. Define personality, tools, knowledge base, guardrails. Ship in minutes.</p></div>
+  </div>
+</section>
+
+<div class="arch" id="arch">
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│   AGENT POOL    │────▶│   ORCHESTRATOR   │────▶│   TASK QUEUE    │
+│   (N workers)   │     │   (routing/LB)   │     │   (priority)    │
+└────────┬────────┘     └────────┬─────────┘     └────────┬────────┘
+         │                       │                         │
+         ▼                       ▼                         ▼
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  KNOWLEDGE BASE │     │   GUARDRAILS &   │     │  INTEGRATIONS   │
+│  (RAG + vector) │     │   APPROVAL GATES │     │  (200+ APIs)    │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+</div>
+
+<div class="stats-row">
+  <div class="stat-block"><div class="stat-val">12M+</div><div class="stat-lbl">Tasks/month</div></div>
+  <div class="stat-block"><div class="stat-val">97.8%</div><div class="stat-lbl">Accuracy</div></div>
+  <div class="stat-block"><div class="stat-val">40x</div><div class="stat-lbl">Speed vs manual</div></div>
+  <div class="stat-block"><div class="stat-val">200+</div><div class="stat-lbl">Integrations</div></div>
+</div>
+
+<section class="final-cta" id="deploy">
+  <div>
+    <h2>Deploy<br>your AI<br><em>workforce</em></h2>
+    <a href="#" class="hero-cta magnetic"><span>Start free trial →</span></a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 AION — Belentani</span>
+  <span>Autonomous Intelligence at Scale</span>
+</footer>
+
+<script>
+// Matrix rain
+const matBg = document.getElementById('matrixBg');
+const chars = 'AION01アイオン神経回路DEPLOY';
+for (let i = 0; i < 30; i++) {
+  const col = document.createElement('div');
+  col.className = 'matrix-col';
+  col.style.left = (Math.random() * 100) + '%';
+  col.style.animationDuration = (8 + Math.random() * 15) + 's';
+  col.style.animationDelay = (-Math.random() * 20) + 's';
+  let t = '';
+  for (let j = 0; j < 40; j++) t += chars[Math.floor(Math.random() * chars.length)] + ' ';
+  col.textContent = t;
+  matBg.appendChild(col);
+}
+
+gsap.registerPlugin(ScrollTrigger);
+const tl = gsap.timeline();
+tl.to('.loader', { opacity: 0, duration: .6, delay: 1.5, onComplete: () => document.querySelector('.loader').style.display = 'none' })
+  .to('.hero-title .word', { y: 0, duration: 1, stagger: .15, ease: 'power4.out' }, '-=.3')
+  .from('.hero-tag', { opacity: 0, duration: .5 }, '-=.8')
+  .from('.hero-sub', { opacity: 0, y: 30, duration: .6 }, '-=.3')
+  .from('.hero-cta', { opacity: 0, y: 20, duration: .5 }, '-=.1');
+
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e => gsap.to(cursor, { x: e.clientX - 10, y: e.clientY - 10, duration: .3 }));
+document.querySelectorAll('a, .magnetic').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+});
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    gsap.to(el, { x: (e.clientX - r.left - r.width/2)*.3, y: (e.clientY - r.top - r.height/2)*.3, duration: .3 });
+  });
+  el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: .5, ease: 'elastic.out(1,.3)' }));
+});
+
+gsap.utils.toArray('.section-heading, .section-body, .section-num').forEach(el => {
+  gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 80%' }, y: 60, opacity: 0, duration: 1 });
+});
+gsap.utils.toArray('.agent-cell').forEach((el, i) => {
+  gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, y: 40, opacity: 0, duration: .8, delay: i * .1 });
+});
+gsap.from('.arch', { scrollTrigger: { trigger: '.arch', start: 'top 80%' }, opacity: 0, scale: .95, duration: 1 });
+</script>
+</body>
 </html>

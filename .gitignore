@@ -31,3 +31,9 @@ Thumbs.db
 .mypy_cache/
 .ruff_cache/
 coverage/
+
+# BELENTANI legacy — seguridad
+.env.*
+!.env.example
+*.pyc
+.vercel/
