@@ -1,0 +1,16 @@
+[Unit]
+Description=AIOND Local Model Gateway
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/aion
+ExecStart=/usr/bin/node %h/aion/runtime/aiond.mjs
+Restart=on-failure
+RestartSec=3
+Environment=AION_PORT=8088
+Environment=AION_OLLAMA_URL=http://127.0.0.1:11434
+
+[Install]
+WantedBy=default.target
+

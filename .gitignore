@@ -1,0 +1,33 @@
+# dependencias
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# build
+dist/
+build/
+.next/
+out/
+target/
+*.egg-info/
+
+# entorno y secretos
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/

@@ -1,0 +1,41 @@
+# Project TODO
+
+- [x] Panel de control con estado de modelo, workspace, permisos, tareas y registros
+- [x] Workspace aislado por proyecto e importación autorizada desde ruta de servidor o URL Git
+- [x] Inspección de estructura, dependencias, puntos de entrada, riesgos y pendientes
+- [x] Adaptador local para Ollama/llama.cpp con comprobación de disponibilidad
+- [x] Selección por tipo de tarea y fallbacks explícitos sin proveedor de pago automático
+- [x] Registro común de filesystem, terminal, Git y tests con esquemas, permisos, riesgo y resultados
+- [x] Ejecutor seguro limitado al workspace, red cerrada por defecto y redacción de secretos
+- [x] Puertas de aprobación para operaciones de riesgo
+- [x] Agente básico con plan verificable, ejecución restringida y estados NOT IMPLEMENTED
+- [x] Flujo AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
+- [x] Persistencia de proyectos, tareas, aprobaciones, historial y memoria de sesión
+- [x] Integración LLM administrada opcional y desactivada por defecto
+- [x] Pruebas unitarias para router de modelos, permisos y registro de herramientas
+- [x] Verificación de extremo a extremo del flujo de auditoría
+- [x] Documentación de arquitectura, modelos, herramientas, seguridad, modo local y agentes
+- [x] Verificación visual responsive y corrección de errores
+- [x] Implementar entidad y estado de tareas y mostrarlo en dashboard
+- [x] Completar importación Git autorizada con aprobación y ejecución real
+- [x] Añadir interfaz ModelProvider y adaptador llama.cpp
+- [x] Implementar routing por tipo de tarea y fallback explícito
+- [x] Crear ejecutor real con restricciones de comandos, red OFF y redacción de secretos
+- [x] Completar resolución de aprobaciones
+- [x] Implementar agente básico con planner verificable
+- [x] Ampliar AUDIT con priorización por bugs, seguridad, dependencias, arquitectura y pruebas
+- [x] Añadir persistencia real de tareas y uso de memoria de sesión
+- [x] Escribir tests unitarios reales para model router, permisos y tool registry
+- [x] Crear docs faltantes: SECURITY.md, LOCAL_MODE.md, AGENTS.md
+- [x] Hacer verificación responsive en móvil y registrar correcciones
+- [x] Auditar CPU, RAM, almacenamiento y runtimes locales disponibles
+- [x] Instalar y configurar un servidor de modelos local sin dependencia de API de pago
+- [x] Sustituir las rutas de inferencia administradas por un gateway local compatible con Ollama o llama.cpp
+- [x] Implementar un agente de terminal real con permisos, confirmaciones y registro persistente
+- [x] Ejecutar una prueba de generación, modificación y validación de código con un modelo local
+- [x] Documentar requisitos de hardware, instalación local y límites de capacidad
+- [x] Conectar AIOND al camino de inferencia real de la aplicación sin usar Forge
+- [x] Exigir confirmación y registrar persistentemente las acciones del agente local
+- [x] Ejecutar una prueba local que modifique código existente y valide una aserción concreta
+- [x] Verificar el backend compatible con llama.cpp o documentarlo como no validado
+- [x] Publicar el proyecto AION en un repositorio privado de GitHub
