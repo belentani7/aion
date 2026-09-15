@@ -34,6 +34,7 @@ coverage/
 
 # BELENTANI legacy — seguridad
 .env.*
+!.env.example
 *.pyc
 .vercel/
 # Dependencies
@@ -147,6 +148,7 @@ client/public/__manus__/version.json
 node_modules/
 .env
 .env.*
+!.env.example
 .mimosa/
 __pycache__/
 .vercel/
