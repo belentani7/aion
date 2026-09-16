@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { publicProcedure, router } from "../_core/trpc";
+import { protectedProcedure, router } from "../_core/trpc";
 import * as service from "./service";
 
 type AionTool = {
@@ -35,13 +35,13 @@ const AION_TOOLS: AionTool[] = [
 ];
 
 export const aionRouter = router({
-  dashboard: publicProcedure.query(() => ({
+  dashboard: protectedProcedure.query(() => ({
     network: "OFF" as const,
     externalProviders: "DISABLED" as const,
     tools: AION_TOOLS,
   })),
 
-  importProject: publicProcedure
+  importProject: protectedProcedure
     .input(
       z.object({
         name: z.string().min(1),
@@ -51,19 +51,19 @@ export const aionRouter = router({
     )
     .mutation(async ({ input }) => service.importProject(input)),
 
-  plan: publicProcedure
+  plan: protectedProcedure
     .input(z.object({ projectId: z.number() }))
     .mutation(async ({ input }) => service.plan(input.projectId)),
 
-  audit: publicProcedure
+  audit: protectedProcedure
     .input(z.object({ projectId: z.number() }))
     .query(async ({ input }) => service.audit(input.projectId)),
 
-  executions: publicProcedure
+  executions: protectedProcedure
     .input(z.object({ projectId: z.number() }))
     .query(async ({ input }) => service.executions(input.projectId)),
 
-  memory: publicProcedure
+  memory: protectedProcedure
     .input(z.object({ projectId: z.number() }))
     .query(async ({ input }) => service.memory(input.projectId)),
 });

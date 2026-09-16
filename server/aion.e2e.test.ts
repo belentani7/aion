@@ -3,7 +3,21 @@ import { appRouter } from "./routers";
 import { deleteProjectData } from "./db";
 import type { TrpcContext } from "./_core/context";
 
-const ctx = { user: undefined, req: {} as TrpcContext["req"], res: {} as TrpcContext["res"] } as TrpcContext;
+const ctx = {
+  user: {
+    id: 1,
+    openId: "aion-e2e-test",
+    email: "aion-e2e@example.com",
+    name: "AION E2E",
+    loginMethod: "test",
+    role: "user" as const,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    lastSignedIn: new Date(),
+  },
+  req: {} as TrpcContext["req"],
+  res: {} as TrpcContext["res"],
+} as TrpcContext;
 
 describe("AION audit workflow", () => {
   it("imports a real workspace, creates a plan, audits it, and persists the trail", async () => {
