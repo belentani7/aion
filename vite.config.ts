@@ -12,12 +12,6 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 // =============================================================================
 
 const PROJECT_ROOT = import.meta.dirname;
-const DEBUG_COLLECTOR_PATH = path.join(
-  PROJECT_ROOT,
-  "dev",
-  "__manus__",
-  "debug-collector.js"
-);
 const LOG_DIR = path.join(PROJECT_ROOT, ".manus-logs");
 const MAX_LOG_SIZE_BYTES = 1 * 1024 * 1024; // 1MB per log file
 const TRIM_TARGET_BYTES = Math.floor(MAX_LOG_SIZE_BYTES * 0.6); // Trim to 60% to avoid constant re-trimming
@@ -104,24 +98,6 @@ function vitePluginManusDebugCollector(): Plugin {
     },
 
     configureServer(server: ViteDevServer) {
-      server.middlewares.use(
-        "/__manus__/debug-collector.js",
-        (req, res, next) => {
-          if (req.method !== "GET" && req.method !== "HEAD") {
-            return next();
-          }
-          try {
-            const content = fs.readFileSync(DEBUG_COLLECTOR_PATH, "utf-8");
-            res.writeHead(200, {
-              "Content-Type": "application/javascript; charset=utf-8",
-            });
-            res.end(content);
-          } catch {
-            next();
-          }
-        }
-      );
-
       // POST /__manus__/logs: Browser sends logs (written directly to files)
       server.middlewares.use("/__manus__/logs", (req, res, next) => {
         if (req.method !== "POST") {
@@ -191,6 +167,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("/react/") || id.includes("/react-dom/") || id.includes("/scheduler/")) return "react-vendor";
+          if (id.includes("/lucide-react/")) return "icons-vendor";
+          if (id.includes("/@radix-ui/")) return "radix-vendor";
+          if (id.includes("/recharts/")) return "charts-vendor";
+          return undefined;
+        },
+      },
+    },
   },
   server: {
     host: true,
