@@ -1,11 +1,15 @@
-# Como contribuir
+# Contributing to Belentani Project
+## Getting Started
+Fork, clone, install (npm install / pip install -r requirements.txt), create branch.
 
-1. Crea una rama con prefijo `feat/`, `fix/` o `docs/`.
-2. Manten los commits pequenos y con un mensaje claro.
-3. Abre un Pull Request describiendo el cambio y como se prueba.
-4. Revisa que el CI pasa antes de pedir revision.
+## Development Workflow
+Run lint/test/build. Follow conventional commits.
 
-## Reportar problemas
+## Pull Request Process
+Submit PR with description, link issues.
 
-Usa las plantillas de issue. Un reporte util incluye pasos para reproducir,
-entorno y esperado frente a obtenido.
+## Code Standards
+Use ESLint/Prettier (JS) or ruff/black (Python). Write tests.
+
+## Reporting Issues
+Use .github/ISSUE_TEMPLATE/bug_report.yml.
