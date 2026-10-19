@@ -1,0 +1,15 @@
+{
+  "engine": "Chromium, synthesized touch (not physical hardware)",
+  "slider": {
+    "before": "50",
+    "afterKeyboard": "51",
+    "afterTouch": "80",
+    "keyboardChangesValue": true,
+    "touchChangesValue": true
+  },
+  "darkThemeApplied": true,
+  "darkViolations": [],
+  "loginDisabled": true,
+  "loginExplained": true,
+  "passed": true
+}

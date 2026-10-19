@@ -1,4 +1,5 @@
-import { eq } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
+import { and, eq } from "drizzle-orm";
 import {
   aionExecutions,
   aionMemory,
@@ -16,6 +17,7 @@ import {
 } from "./store";
 
 export type ImportProjectInput = {
+  ownerId: number;
   name: string;
   sourcePath: string;
   sourceType: string;
@@ -23,6 +25,7 @@ export type ImportProjectInput = {
 
 export type ImportProjectResult = {
   status: "ready";
+  scope: "registration-only";
   projectId: number;
 };
 
@@ -35,13 +38,13 @@ const PLAN_TEMPLATE: { title: string; description: string }[] = [
 ];
 
 const EXECUTION_TEMPLATE: { command: string; status: string; output: string }[] = [
-  { command: "workspace.scan", status: "completed", output: "Inventario del workspace completado." },
-  { command: "deps.audit", status: "completed", output: "Dependencias analizadas sin red externa." },
+  { command: "workspace.scan", status: "pending", output: "Inventario pendiente; registrar una ruta no ejecuta un escaneo." },
+  { command: "deps.audit", status: "pending", output: "Analisis de dependencias pendiente; no se ha ejecutado." },
   { command: "tests.run", status: "not_implemented", output: "La ejecucion de procesos requiere aprobacion explicita." },
 ];
 
 const MEMORY_TEMPLATE: { memoryKey: string; value: string }[] = [
-  { memoryKey: "project.summary", value: "Proyecto importado y planificado en modo seguro (red OFF)." },
+  { memoryKey: "project.summary", value: "Registro y plan inicial creados. No se han ejecutado auditorias ni procesos." },
 ];
 
 function extractInsertId(result: unknown): number | null {
@@ -86,156 +89,85 @@ function normalizeMemory(row: Record<string, unknown>): AionMemoryRecord {
   };
 }
 
+
+function dataUnavailable(): never {
+  throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Project data unavailable; verify database configuration and migrations" });
+}
+async function backend() {
+  const db = await getDb();
+  if (!db && (process.env.DATABASE_URL || (process.env.NODE_ENV === "production" && process.env.AION_EPHEMERAL_DEMO !== "1"))) {
+    throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Persistent database required; ephemeral demo must be explicitly enabled" });
+  }
+  return db;
+}
+async function ownedProject(projectId: number, ownerId: number) {
+  if (!Number.isSafeInteger(ownerId) || ownerId <= 0) throw new TRPCError({ code: "UNAUTHORIZED" });
+  const db = await backend();
+  let found = false;
+  if (db) {
+    try {
+      const rows = await db.select({id:aionProjects.id}).from(aionProjects)
+        .where(and(eq(aionProjects.id, projectId), eq(aionProjects.ownerId, ownerId))).limit(1);
+      found = rows.length === 1;
+    } catch { dataUnavailable(); }
+  } else {
+    found = aionMemoryStore.projects.some(p => p.id === projectId && p.ownerId === ownerId);
+  }
+  // Do not disclose whether an inaccessible project exists.
+  if (!found) throw new TRPCError({code:"NOT_FOUND", message:"Project not found"});
+  return db;
+}
 export async function importProject(input: ImportProjectInput): Promise<ImportProjectResult> {
-  const db = await getDb();
+  if (!Number.isSafeInteger(input.ownerId) || input.ownerId <= 0) throw new TRPCError({code:"UNAUTHORIZED"});
+  const db = await backend();
   if (db) {
     try {
-      const inserted = await db.insert(aionProjects).values({
-        name: input.name,
-        sourcePath: input.sourcePath,
-        sourceType: input.sourceType,
-        status: "ready",
+      const projectId = await db.transaction(async (tx: any) => {
+        const result = await tx.insert(aionProjects).values({...input, status:"ready"});
+        const id = extractInsertId(result);
+        if (id === null) throw new Error("Missing project identifier");
+        await tx.insert(aionTasks).values(PLAN_TEMPLATE.map((task, position)=>({projectId:id,...task,status:"pending",position})));
+        await tx.insert(aionExecutions).values(EXECUTION_TEMPLATE.map(row=>({projectId:id,...row})));
+        await tx.insert(aionMemory).values(MEMORY_TEMPLATE.map(row=>({projectId:id,...row})));
+        return id;
       });
-      const projectId = extractInsertId(inserted);
-      if (projectId !== null) {
-        await db.insert(aionTasks).values(
-          PLAN_TEMPLATE.map((task, index) => ({
-            projectId,
-            title: task.title,
-            description: task.description,
-            status: "pending",
-            position: index,
-          }))
-        );
-        await db.insert(aionExecutions).values(
-          EXECUTION_TEMPLATE.map(execution => ({ projectId, ...execution }))
-        );
-        await db.insert(aionMemory).values(
-          MEMORY_TEMPLATE.map(record => ({ projectId, ...record }))
-        );
-        return { status: "ready", projectId };
-      }
-    } catch (error) {
-      console.warn("[AION] importProject: using in-memory store:", error);
-    }
+      return {status:"ready",scope:"registration-only",projectId};
+    } catch { dataUnavailable(); }
   }
-
   const projectId = nextAionId();
-  const project: AionProjectRecord = {
-    id: projectId,
-    name: input.name,
-    sourcePath: input.sourcePath,
-    sourceType: input.sourceType,
-    status: "ready",
-    createdAt: new Date(),
-  };
-  aionMemoryStore.projects.push(project);
-
-  PLAN_TEMPLATE.forEach((task, index) => {
-    const id = nextAionId();
-    aionMemoryStore.tasks.push({
-      id,
-      projectId,
-      title: task.title,
-      description: task.description,
-      status: "pending",
-      position: index,
-    });
-  });
-  EXECUTION_TEMPLATE.forEach(execution => {
-    const id = nextAionId();
-    aionMemoryStore.executions.push({
-      id,
-      projectId,
-      command: execution.command,
-      status: execution.status,
-      output: execution.output,
-      createdAt: new Date(),
-    });
-  });
-  MEMORY_TEMPLATE.forEach(record => {
-    const id = nextAionId();
-    aionMemoryStore.memory.push({
-      id,
-      projectId,
-      memoryKey: record.memoryKey,
-      value: record.value,
-      createdAt: new Date(),
-    });
-  });
-
-  return { status: "ready", projectId };
+  aionMemoryStore.projects.push({id:projectId,...input,status:"ready",createdAt:new Date()});
+  PLAN_TEMPLATE.forEach((task,position)=>aionMemoryStore.tasks.push({id:nextAionId(),projectId,...task,status:"pending",position}));
+  EXECUTION_TEMPLATE.forEach(row=>aionMemoryStore.executions.push({id:nextAionId(),projectId,...row,createdAt:new Date()}));
+  MEMORY_TEMPLATE.forEach(row=>aionMemoryStore.memory.push({id:nextAionId(),projectId,...row,createdAt:new Date()}));
+  return {status:"ready",scope:"registration-only",projectId};
 }
-
-export async function plan(projectId: number): Promise<{ tasks: AionTaskRecord[] }> {
-  const db = await getDb();
+export async function plan(projectId: number, ownerId: number): Promise<{tasks:AionTaskRecord[]}> {
+  const db = await ownedProject(projectId, ownerId);
   if (db) {
     try {
-      const rows = (await db.select().from(aionTasks).where(eq(aionTasks.projectId, projectId))) as Record<
-        string,
-        unknown
-      >[];
-      if (rows.length > 0) {
-        return { tasks: rows.map(normalizeTask).sort((a, b) => a.position - b.position) };
-      }
-    } catch (error) {
-      console.warn("[AION] plan: using in-memory store:", error);
-    }
+      const rows = await db.select().from(aionTasks).where(eq(aionTasks.projectId,projectId));
+      return {tasks:rows.map(normalizeTask).sort((a:AionTaskRecord,b:AionTaskRecord)=>a.position-b.position)};
+    } catch { dataUnavailable(); }
   }
-  const tasks = aionMemoryStore.tasks
-    .filter(task => task.projectId === projectId)
-    .sort((a, b) => a.position - b.position);
-  return { tasks };
+  return {tasks:aionMemoryStore.tasks.filter(t=>t.projectId===projectId).sort((a,b)=>a.position-b.position)};
 }
-
-export async function audit(projectId: number): Promise<{ project: { id: number } }> {
-  const db = await getDb();
-  if (db) {
-    try {
-      const rows = (await db
-        .select()
-        .from(aionProjects)
-        .where(eq(aionProjects.id, projectId))
-        .limit(1)) as Record<string, unknown>[];
-      if (rows.length > 0) {
-        return { project: { id: Number(rows[0].id) } };
-      }
-    } catch (error) {
-      console.warn("[AION] audit: using in-memory store:", error);
-    }
-  }
-  const project = aionMemoryStore.projects.find(candidate => candidate.id === projectId);
-  return { project: { id: project ? project.id : projectId } };
+export async function audit(projectId: number, ownerId: number) {
+  await ownedProject(projectId, ownerId);
+  return {project:{id:projectId},status:"not_performed" as const};
 }
-
-export async function executions(projectId: number): Promise<AionExecutionRecord[]> {
-  const db = await getDb();
+export async function executions(projectId: number, ownerId: number): Promise<AionExecutionRecord[]> {
+  const db = await ownedProject(projectId, ownerId);
   if (db) {
-    try {
-      const rows = (await db
-        .select()
-        .from(aionExecutions)
-        .where(eq(aionExecutions.projectId, projectId))) as Record<string, unknown>[];
-      if (rows.length > 0) return rows.map(normalizeExecution);
-    } catch (error) {
-      console.warn("[AION] executions: using in-memory store:", error);
-    }
+    try {return (await db.select().from(aionExecutions).where(eq(aionExecutions.projectId,projectId))).map(normalizeExecution);}
+    catch {dataUnavailable();}
   }
-  return aionMemoryStore.executions.filter(execution => execution.projectId === projectId);
+  return aionMemoryStore.executions.filter(row=>row.projectId===projectId);
 }
-
-export async function memory(projectId: number): Promise<AionMemoryRecord[]> {
-  const db = await getDb();
+export async function memory(projectId: number, ownerId: number): Promise<AionMemoryRecord[]> {
+  const db = await ownedProject(projectId, ownerId);
   if (db) {
-    try {
-      const rows = (await db
-        .select()
-        .from(aionMemory)
-        .where(eq(aionMemory.projectId, projectId))) as Record<string, unknown>[];
-      if (rows.length > 0) return rows.map(normalizeMemory);
-    } catch (error) {
-      console.warn("[AION] memory: using in-memory store:", error);
-    }
+    try {return (await db.select().from(aionMemory).where(eq(aionMemory.projectId,projectId))).map(normalizeMemory);}
+    catch {dataUnavailable();}
   }
-  return aionMemoryStore.memory.filter(record => record.projectId === projectId);
+  return aionMemoryStore.memory.filter(row=>row.projectId===projectId);
 }

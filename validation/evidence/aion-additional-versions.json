@@ -1,0 +1,1098 @@
+[
+  {
+    "archive": "ENTREGA-aion-FIX-COMMIT-INCLUIDO-ARENA-2026-10-17.zip",
+    "sha256": "5726ea609ec97a6ce985bb5a051a8e8b91b01e5fe0d111c4db4fcfcac70cbe19",
+    "comparisons": [
+      {
+        "path": "vitest.config.ts",
+        "status": "identical"
+      },
+      {
+        "path": "vite.config.ts",
+        "status": "different"
+      },
+      {
+        "path": "shared/types.ts",
+        "status": "identical"
+      },
+      {
+        "path": "shared/const.ts",
+        "status": "identical"
+      },
+      {
+        "path": "shared/_core/errors.ts",
+        "status": "identical"
+      },
+      {
+        "path": "package.json",
+        "status": "identical"
+      },
+      {
+        "path": "package-lock.json",
+        "status": "different"
+      },
+      {
+        "path": "drizzle.config.ts",
+        "status": "identical"
+      },
+      {
+        "path": "tsconfig.json",
+        "status": "different"
+      },
+      {
+        "path": "server/storage.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/routers.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/db.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/auth.logout.test.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion.modelRouter.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion.executor.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/voiceTranscription.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/vite.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/types/manusTypes.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/types/cookie.d.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/trpc.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/systemRouter.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/storageProxy.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/sdk.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/oauth.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/notification.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/map.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/index.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/imageGeneration.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/heartbeat.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/env.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/dataApi.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/cookies.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/context.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion/store.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion/service.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion/safeExecutor.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion/modelRouter.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion/router.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion.security.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion.e2e.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "postcss.config.js",
+        "status": "identical"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "status": "identical"
+      },
+      {
+        "path": "patches/wouter@3.7.1.patch",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle/schema.ts",
+        "status": "different"
+      },
+      {
+        "path": "drizzle/relations.ts",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle/0000_dizzy_hemingway.sql",
+        "status": "identical"
+      },
+      {
+        "path": "dev/__manus__/debug-collector.js",
+        "status": "identical"
+      },
+      {
+        "path": "components.json",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/lib/utils.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/lib/trpc.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/const.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/_core/hooks/useAuth.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/NotFound.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/Home.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/ComponentShowcase.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/main.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/index.css",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/usePersistFn.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/useComposition.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/useMobile.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/contexts/ThemeContext.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/calendar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/tooltip.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/toggle.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/toggle-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/textarea.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/tabs.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/table.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/switch.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/spinner.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sonner.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/slider.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/skeleton.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sidebar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sheet.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/separator.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/select.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/scroll-area.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/resizable.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/radio-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/progress.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/popover.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/pagination.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/navigation-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/menubar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/label.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/kbd.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/item.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input-otp.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/hover-card.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/form.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/field.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/empty.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/dropdown-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/drawer.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/dialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/context-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/command.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/collapsible.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/checkbox.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/chart.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/carousel.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/card.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/button.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/button-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/breadcrumb.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/badge.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/avatar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/aspect-ratio.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/alert.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/alert-dialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/accordion.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/Map.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ManusDialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ErrorBoundary.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/DashboardLayoutSkeleton.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/DashboardLayout.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/AIChatBox.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/App.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/public/landing.html",
+        "status": "different"
+      },
+      {
+        "path": "client/index.html",
+        "status": "different"
+      },
+      {
+        "path": "SECURITY.md",
+        "status": "identical"
+      },
+      {
+        "path": "README.md",
+        "status": "identical"
+      },
+      {
+        "path": "LICENSE",
+        "status": "identical"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "status": "identical"
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "status": "identical"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "status": "identical"
+      },
+      {
+        "path": ".prettierrc",
+        "status": "identical"
+      },
+      {
+        "path": ".prettierignore",
+        "status": "identical"
+      },
+      {
+        "path": ".gitignore",
+        "status": "identical"
+      },
+      {
+        "path": ".github/workflows/security.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".github/workflows/build.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".github/pull_request_template.md",
+        "status": "identical"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "status": "identical"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".env.example",
+        "status": "identical"
+      },
+      {
+        "path": ".editorconfig",
+        "status": "identical"
+      }
+    ]
+  },
+  {
+    "archive": "aion-fusion-60d7faa.zip",
+    "sha256": "17d67d53039af2ab0aa1fff91afcb9d9b292c395285c37daba88f8f25b84f482",
+    "comparisons": [
+      {
+        "path": ".env.example",
+        "status": "identical"
+      },
+      {
+        "path": ".github/workflows/build.yml",
+        "status": "identical"
+      },
+      {
+        "path": ".gitignore",
+        "status": "identical"
+      },
+      {
+        "path": ".prettierignore",
+        "status": "identical"
+      },
+      {
+        "path": ".prettierrc",
+        "status": "identical"
+      },
+      {
+        "path": "LICENSE",
+        "status": "identical"
+      },
+      {
+        "path": "README.md",
+        "status": "identical"
+      },
+      {
+        "path": "client/index.html",
+        "status": "different"
+      },
+      {
+        "path": "client/public/landing.html",
+        "status": "different"
+      },
+      {
+        "path": "client/src/App.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/_core/hooks/useAuth.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/AIChatBox.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/DashboardLayout.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/DashboardLayoutSkeleton.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ErrorBoundary.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ManusDialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/Map.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/accordion.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/alert-dialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/alert.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/aspect-ratio.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/avatar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/badge.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/breadcrumb.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/button-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/button.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/calendar.tsx",
+        "status": "different"
+      },
+      {
+        "path": "client/src/components/ui/card.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/carousel.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/chart.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/checkbox.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/collapsible.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/command.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/context-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/dialog.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/drawer.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/dropdown-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/empty.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/field.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/form.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/hover-card.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input-otp.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/input.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/item.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/kbd.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/label.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/menubar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/navigation-menu.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/pagination.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/popover.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/progress.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/radio-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/resizable.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/scroll-area.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/select.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/separator.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sheet.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sidebar.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/skeleton.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/slider.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/sonner.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/spinner.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/switch.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/table.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/tabs.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/textarea.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/toggle-group.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/toggle.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/components/ui/tooltip.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/const.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/contexts/ThemeContext.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/useComposition.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/useMobile.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/hooks/usePersistFn.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/index.css",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/lib/trpc.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/lib/utils.ts",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/main.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/ComponentShowcase.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/Home.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "client/src/pages/NotFound.tsx",
+        "status": "identical"
+      },
+      {
+        "path": "components.json",
+        "status": "identical"
+      },
+      {
+        "path": "dev/__manus__/debug-collector.js",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle.config.ts",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle/0000_dizzy_hemingway.sql",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle/relations.ts",
+        "status": "identical"
+      },
+      {
+        "path": "drizzle/schema.ts",
+        "status": "different"
+      },
+      {
+        "path": "package-lock.json",
+        "status": "different"
+      },
+      {
+        "path": "package.json",
+        "status": "different"
+      },
+      {
+        "path": "patches/wouter@3.7.1.patch",
+        "status": "identical"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "status": "identical"
+      },
+      {
+        "path": "postcss.config.js",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/context.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/cookies.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/dataApi.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/env.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/heartbeat.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/imageGeneration.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/index.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/map.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/notification.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/oauth.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/sdk.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/storageProxy.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/systemRouter.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/trpc.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/types/cookie.d.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/types/manusTypes.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/_core/vite.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/_core/voiceTranscription.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion.e2e.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion.executor.test.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion.modelRouter.test.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion.security.test.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion/modelRouter.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion/router.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion/safeExecutor.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/aion/service.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/aion/store.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/auth.logout.test.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/db.ts",
+        "status": "different"
+      },
+      {
+        "path": "server/routers.ts",
+        "status": "identical"
+      },
+      {
+        "path": "server/storage.ts",
+        "status": "identical"
+      },
+      {
+        "path": "shared/_core/errors.ts",
+        "status": "identical"
+      },
+      {
+        "path": "shared/const.ts",
+        "status": "identical"
+      },
+      {
+        "path": "shared/types.ts",
+        "status": "identical"
+      },
+      {
+        "path": "tsconfig.json",
+        "status": "different"
+      },
+      {
+        "path": "vite.config.ts",
+        "status": "different"
+      },
+      {
+        "path": "vitest.config.ts",
+        "status": "identical"
+      }
+    ]
+  }
+]

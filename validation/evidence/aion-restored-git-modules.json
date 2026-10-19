@@ -1,0 +1,207 @@
+[
+  {
+    "path": "client/src/_core/hooks/useAuth.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "client/src/const.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "client/src/hooks/useComposition.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "client/src/hooks/usePersistFn.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "client/src/lib/trpc.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "client/src/lib/utils.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "drizzle.config.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "drizzle/relations.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "drizzle/schema.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/context.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/cookies.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/dataApi.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/env.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/heartbeat.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/imageGeneration.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/index.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/map.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/notification.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/oauth.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/sdk.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/storageProxy.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/systemRouter.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/trpc.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/types/cookie.d.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/types/manusTypes.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/vite.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/_core/voiceTranscription.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion.executor.test.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion.modelRouter.test.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion/modelRouter.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion/safeExecutor.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion/service.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/aion/store.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/auth.logout.test.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/db.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/routers.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "server/storage.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "shared/_core/errors.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "shared/const.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "shared/types.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  },
+  {
+    "path": "vitest.config.ts",
+    "recovered_from": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78^",
+    "deleted_by": "5ca44bfc6cd4218b7730a4a1038ca927ad270f78"
+  }
+]

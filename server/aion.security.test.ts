@@ -41,11 +41,11 @@ describe("AION security contracts", () => {
     expect(dashboard.tools.find(tool => tool.name === "managed_llm")?.status).toBe("disabled_by_default");
   });
 
-  it("exposes risky tools with explicit approval requirements", async () => {
+  it("labels the unavailable terminal honestly without claiming execution support", async () => {
     const dashboard = await appRouter.createCaller(authenticatedContext).aion.dashboard();
     const terminal = dashboard.tools.find(tool => tool.name === "terminal");
     expect(terminal?.riskLevel).toBe("high");
-    expect(terminal?.status).toBe("available");
+    expect(terminal?.status).toBe("not_implemented");
     expect(terminal?.permissions).toContain("workspace.exec");
   });
 });

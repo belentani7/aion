@@ -1,0 +1,95 @@
+{
+  "repository": "belentani7/aion",
+  "repository_id": 1380543886,
+  "drive_archive_sha256": "cfb740e5e884ea090aeebfa22f307c50a39cc1eee934f5ac111cbdda874aae28",
+  "drive_base_commit": "60d7faa88ba769b3725a88a6c28ab5ec6d867444",
+  "git_main_commit": "cd220fb4a21c9a034b93f2ea82f516fbbb23a6a5",
+  "candidate": ".cache/unified/aion",
+  "base_checks": [
+    {
+      "path": "vite.config.ts",
+      "archive_matches_claimed_commit": true
+    },
+    {
+      "path": "package.json",
+      "archive_matches_claimed_commit": true
+    },
+    {
+      "path": "server/_core/sdk.ts",
+      "archive_matches_claimed_commit": true
+    },
+    {
+      "path": "server/_core/storageProxy.ts",
+      "archive_matches_claimed_commit": true
+    },
+    {
+      "path": "client/index.html",
+      "archive_matches_claimed_commit": true
+    },
+    {
+      "path": "client/public/landing.html",
+      "archive_matches_claimed_commit": true
+    }
+  ],
+  "changes": [
+    {
+      "path": "vite.config.ts",
+      "repaired_sha256": "793de845ff8ad860cf4b01cd4f7aa78abcf8131250dfdab54ad510fc7e34a21e",
+      "status": "three-way-merged"
+    },
+    {
+      "path": "LOCAL_VALIDATION.md",
+      "repaired_sha256": "9681678233582c54e256b05f783acb6ddba36ce76becd4533c769f5f2cda15e5",
+      "status": "already-identical"
+    },
+    {
+      "path": "package.json",
+      "repaired_sha256": "f76290ab9bb2bbe268aca75ef92ec462a1d5a10c46c3daa60679b2a9810b147f",
+      "status": "three-way-merged"
+    },
+    {
+      "path": "SECURITY-CHANGES-2026-10-19.md",
+      "repaired_sha256": "8de6c2dbcf57528aac05d34159e3c6c1113ffb1ab48cbc8b1a45b337455baa6c",
+      "status": "already-identical"
+    },
+    {
+      "path": "server/auth.secret.test.ts",
+      "repaired_sha256": "66a509c368eb8ea8d1a128447705818837e76f64a2ddae260d11215b801bb1db",
+      "status": "already-identical"
+    },
+    {
+      "path": "server/auth.session.test.ts",
+      "repaired_sha256": "c25d1e7b4545680cabd6dbac3709e6a7650403553c983440a10bd34f62eb6242",
+      "status": "already-identical"
+    },
+    {
+      "path": "server/storage.proxy.test.ts",
+      "repaired_sha256": "c00d3aa77b253fc1fb00f00bb56971ffa158b53e62b54e79a27c89b4cc0afa90",
+      "status": "already-identical"
+    },
+    {
+      "path": "server/_core/sdk.ts",
+      "repaired_sha256": "31cbb49316e9b30ae3c90ab2e38e69bd36221870d851d3918e1a961fb4e12513",
+      "status": "applied-to-unchanged-base"
+    },
+    {
+      "path": "server/_core/storageProxy.ts",
+      "repaired_sha256": "298bfcfdf6502e002819b0f47050ef506043722a7af72c9ef84262569b70ac42",
+      "status": "applied-to-unchanged-base"
+    },
+    {
+      "path": "client/index.html",
+      "repaired_sha256": "934c0e89c96ebefca3ae1db1d2c93d91851feef9d1ef24039bbd5f9a4a701fd3",
+      "status": "already-identical"
+    },
+    {
+      "path": "client/public/landing.html",
+      "repaired_sha256": "c776eabffe96b0a6138e63c80129d50d54bb115716baf30b4a7247f8e0d8aab0",
+      "status": "already-identical"
+    }
+  ],
+  "production_deployed": false,
+  "other_branches": "Aion remote has only main; 44 reachable commits indexed",
+  "vercel_linked_repository_id": 1348054320,
+  "identity_warning": "Vercel linked numeric repository ID differs from current public repository ID; old deployed commit is a verified ancestor, but binding needs reconciliation."
+}

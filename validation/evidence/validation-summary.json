@@ -1,0 +1,47 @@
+{
+  "clean_install": "passed: npm ci --ignore-scripts --legacy-peer-deps",
+  "typecheck": "passed",
+  "unit_tests": 36,
+  "test_files": 11,
+  "production_build": "passed locally",
+  "local_import_contract": "passed",
+  "browser_entry_states": {
+    "passed": 12,
+    "total": 12,
+    "routes": [
+      "/",
+      "/landing.html",
+      "/components"
+    ],
+    "widths": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "automated_wcag_scope": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa"
+    ]
+  },
+  "dark_keyboard_synthesized_touch_checks": {
+    "engine": "Chromium, synthesized touch (not physical hardware)",
+    "slider": {
+      "before": "50",
+      "afterKeyboard": "51",
+      "afterTouch": "80",
+      "keyboardChangesValue": true,
+      "touchChangesValue": true
+    },
+    "darkThemeApplied": true,
+    "darkViolations": [],
+    "loginDisabled": true,
+    "loginExplained": true,
+    "passed": true
+  },
+  "production_deployed": false,
+  "live_provider_checks": false,
+  "database_migration_applied": false,
+  "all_487_complete": false
+}

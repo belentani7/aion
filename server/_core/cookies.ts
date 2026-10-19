@@ -39,9 +39,7 @@ export function getSessionCookieOptions(
   //       ? hostname
   //       : undefined;
 
-  const domain = process.env.COOKIE_DOMAIN?.trim();
   return {
-    ...(domain ? { domain } : {}),
     httpOnly: true,
     path: "/",
     sameSite: "none",

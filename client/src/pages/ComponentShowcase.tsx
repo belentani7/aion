@@ -233,7 +233,7 @@ export default function ComponentsShowcase() {
           <h2 className="text-3xl font-bold tracking-tight mb-6">
             Shadcn/ui Component Library
           </h2>
-          <Button variant="outline" size="icon" onClick={toggleTheme}>
+          <Button variant="outline" size="icon" aria-label="Toggle color theme" onClick={toggleTheme}>
             {theme === "light" ? (
               <Moon className="h-5 w-5" />
             ) : (
@@ -330,49 +330,49 @@ export default function ComponentsShowcase() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="bg-primary text-primary-foreground rounded-lg p-4">
                     <p className="font-medium mb-1">Primary</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Primary background with foreground text
                     </p>
                   </div>
                   <div className="bg-secondary text-secondary-foreground rounded-lg p-4">
                     <p className="font-medium mb-1">Secondary</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Secondary background with foreground text
                     </p>
                   </div>
                   <div className="bg-muted text-muted-foreground rounded-lg p-4">
                     <p className="font-medium mb-1">Muted</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Muted background with foreground text
                     </p>
                   </div>
                   <div className="bg-accent text-accent-foreground rounded-lg p-4">
                     <p className="font-medium mb-1">Accent</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Accent background with foreground text
                     </p>
                   </div>
                   <div className="bg-destructive text-destructive-foreground rounded-lg p-4">
                     <p className="font-medium mb-1">Destructive</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Destructive background with foreground text
                     </p>
                   </div>
                   <div className="bg-card text-card-foreground rounded-lg p-4 border">
                     <p className="font-medium mb-1">Card</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Card background with foreground text
                     </p>
                   </div>
                   <div className="bg-popover text-popover-foreground rounded-lg p-4 border">
                     <p className="font-medium mb-1">Popover</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Popover background with foreground text
                     </p>
                   </div>
                   <div className="bg-background text-foreground rounded-lg p-4 border">
                     <p className="font-medium mb-1">Background</p>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm">
                       Default background with foreground text
                     </p>
                   </div>
@@ -395,7 +395,7 @@ export default function ComponentsShowcase() {
                   <Button variant="link">Link</Button>
                   <Button size="sm">Small</Button>
                   <Button size="lg">Large</Button>
-                  <Button size="icon">
+                  <Button size="icon" aria-label="Confirm example">
                     <Check className="h-4 w-4" />
                   </Button>
                 </div>
@@ -422,7 +422,7 @@ export default function ComponentsShowcase() {
                 <div className="space-y-2">
                   <Label>Select</Label>
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Choose a fruit">
                       <SelectValue placeholder="Select a fruit" />
                     </SelectTrigger>
                     <SelectContent>
@@ -455,11 +455,11 @@ export default function ComponentsShowcase() {
                 </div>
                 <div className="space-y-2">
                   <Label>Slider</Label>
-                  <Slider defaultValue={[50]} max={100} step={1} />
+                  <Slider aria-label="Example value" defaultValue={[50]} max={100} step={1} />
                 </div>
                 <div className="space-y-2">
                   <Label>Input OTP</Label>
-                  <InputOTP maxLength={6}>
+                  <InputOTP aria-label="One-time code" maxLength={6}>
                     <InputOTPGroup>
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
@@ -540,6 +540,7 @@ export default function ComponentsShowcase() {
                       <Button
                         variant="outline"
                         role="combobox"
+                        aria-label="Choose a framework"
                         aria-expanded={openCombobox}
                         className="w-full justify-between"
                       >
@@ -696,7 +697,7 @@ export default function ComponentsShowcase() {
                   <Label>Avatar</Label>
                   <div className="flex gap-4">
                     <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarImage src="https://github.com/shadcn.png" alt="Example profile" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                     <Avatar>
@@ -707,7 +708,7 @@ export default function ComponentsShowcase() {
                 <Separator />
                 <div className="space-y-2">
                   <Label>Progress</Label>
-                  <Progress value={progress} />
+                  <Progress aria-label="Example completion" value={progress} />
                   <div className="flex gap-2">
                     <Button
                       size="sm"

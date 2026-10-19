@@ -76,6 +76,45 @@ footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justi
 .magnetic{display:inline-block;transition:transform .3s cubic-bezier(.23,1,.32,1)}
 @media(max-width:768px){nav{padding:16px 24px}.nav-menu{display:none}.section{padding:80px 24px}.agent-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr);padding:0 24px}.arch{margin:40px 24px;font-size:.55rem}footer{flex-direction:column;gap:12px}}
 </style>
+
+<style id="reduced-motion-support">
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
+<style id="readable-text-opacity">
+.terminal-scroll > span { opacity: 1 !important; }
+</style>
+
+<!-- Measured text-contrast repair: hue/layout preserved; browser verification required. -->
+<style id="measured-contrast-repair">
+:is(.loader-sub) { color: #697a92 !important; }
+:is(.hero-sub) { color: #697a92 !important; }
+:is(.section-body) { color: #697a92 !important; }
+:is(div[data-id="AGT-001"] > p) { color: #697a92 !important; }
+:is(div[data-id="AGT-002"] > p) { color: #697a92 !important; }
+:is(div[data-id="AGT-003"] > p) { color: #697a92 !important; }
+:is(div[data-id="AGT-004"] > p) { color: #697a92 !important; }
+:is(div[data-id="AGT-005"] > p) { color: #697a92 !important; }
+:is(div[data-id="AGT-006"] > p) { color: #697a92 !important; }
+:is(.stat-block:nth-child(1) > .stat-lbl) { color: #697a92 !important; }
+:is(.stat-block:nth-child(2) > .stat-lbl) { color: #697a92 !important; }
+:is(.stat-block:nth-child(3) > .stat-lbl) { color: #697a92 !important; }
+:is(.stat-block:nth-child(4) > .stat-lbl) { color: #697a92 !important; }
+:is(footer > span:nth-child(1)) { color: #697a92 !important; }
+:is(footer > span:nth-child(2)) { color: #697a92 !important; }
+</style>
+
+<style id="responsive-source-repairs">
+.terminal-bar{max-width:100%;overflow:hidden} .arch{max-width:calc(100% - 48px);overflow-x:auto} @media(max-width:700px){ .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))} .stat-block{min-width:0;overflow-wrap:anywhere} }
+</style>
 </head>
 <body>
 
@@ -87,7 +126,7 @@ footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justi
 <div class="cursor"></div>
 <div class="grain"></div>
 
-<div class="matrix-bg" id="matrixBg"></div>
+<div class="matrix-bg" id="matrixBg" aria-hidden="true"></div>
 
 <nav>
   <div class="nav-logo magnetic">AION</div>
@@ -98,6 +137,7 @@ footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justi
   </div>
 </nav>
 
+<main id="main-content">
 <section class="hero">
   <div class="hero-content">
     <div class="hero-tag">AI Agent Workforce</div>
@@ -142,7 +182,7 @@ footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justi
   </div>
 </section>
 
-<div class="arch" id="arch">
+<div class="arch" id="arch" tabindex="0">
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
 │   AGENT POOL    │────▶│   ORCHESTRATOR   │────▶│   TASK QUEUE    │
 │   (N workers)   │     │   (routing/LB)   │     │   (priority)    │
@@ -169,16 +209,18 @@ footer{padding:48px;border-top:1px solid rgba(245,158,11,.05);display:flex;justi
   </div>
 </section>
 
+</main>
 <footer>
   <span>© 2026 AION — Belentani</span>
   <span>Autonomous Intelligence at Scale</span>
 </footer>
 
 <script>
-// Matrix rain
+// Matrix rain is decorative; no animation or random text with reduced motion.
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const matBg = document.getElementById('matrixBg');
 const chars = 'AION01アイオン神経回路DEPLOY';
-for (let i = 0; i < 30; i++) {
+for (let i = 0; !reducedMotion && i < 30; i++) {
   const col = document.createElement('div');
   col.className = 'matrix-col';
   col.style.left = (Math.random() * 100) + '%';
@@ -190,6 +232,7 @@ for (let i = 0; i < 30; i++) {
   matBg.appendChild(col);
 }
 
+if (!reducedMotion && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
 gsap.registerPlugin(ScrollTrigger);
 const tl = gsap.timeline();
 tl.to('.loader', { opacity: 0, duration: .6, delay: 1.5, onComplete: () => document.querySelector('.loader').style.display = 'none' })
@@ -219,6 +262,12 @@ gsap.utils.toArray('.agent-cell').forEach((el, i) => {
   gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, y: 40, opacity: 0, duration: .8, delay: i * .1 });
 });
 gsap.from('.arch', { scrollTrigger: { trigger: '.arch', start: 'top 80%' }, opacity: 0, scale: .95, duration: 1 });
+} else {
+  document.querySelector('.loader')?.remove();
+  document.querySelector('.cursor')?.remove();
+  document.body.style.cursor = 'auto';
+  document.querySelectorAll('.hero-title .word').forEach(word => word.style.transform = 'none');
+}
 </script>
 </body>
 </html>

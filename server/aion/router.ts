@@ -27,10 +27,10 @@ const AION_TOOLS: AionTool[] = [
   },
   {
     name: "terminal",
-    status: "available",
+    status: "not_implemented",
     riskLevel: "high",
     permissions: ["workspace.read", "workspace.exec"],
-    description: "Ejecucion de procesos en el workspace. Requiere aprobacion explicita (AION_AGENT_APPROVED=YES).",
+    description: "Ejecucion de procesos no implementada; no se ejecutan comandos desde la web.",
   },
 ];
 
@@ -49,21 +49,21 @@ export const aionRouter = router({
         sourceType: z.string().min(1),
       })
     )
-    .mutation(async ({ input }) => service.importProject(input)),
+    .mutation(async ({ input, ctx }) => service.importProject({ ...input, ownerId: ctx.user.id })),
 
   plan: protectedProcedure
-    .input(z.object({ projectId: z.number() }))
-    .mutation(async ({ input }) => service.plan(input.projectId)),
+    .input(z.object({ projectId: z.number().int().positive() }))
+    .mutation(async ({ input, ctx }) => service.plan(input.projectId, ctx.user.id)),
 
   audit: protectedProcedure
-    .input(z.object({ projectId: z.number() }))
-    .query(async ({ input }) => service.audit(input.projectId)),
+    .input(z.object({ projectId: z.number().int().positive() }))
+    .query(async ({ input, ctx }) => service.audit(input.projectId, ctx.user.id)),
 
   executions: protectedProcedure
-    .input(z.object({ projectId: z.number() }))
-    .query(async ({ input }) => service.executions(input.projectId)),
+    .input(z.object({ projectId: z.number().int().positive() }))
+    .query(async ({ input, ctx }) => service.executions(input.projectId, ctx.user.id)),
 
   memory: protectedProcedure
-    .input(z.object({ projectId: z.number() }))
-    .query(async ({ input }) => service.memory(input.projectId)),
+    .input(z.object({ projectId: z.number().int().positive() }))
+    .query(async ({ input, ctx }) => service.memory(input.projectId, ctx.user.id)),
 });

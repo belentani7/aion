@@ -155,7 +155,11 @@ class SDKServer {
 
   private getSessionSecret() {
     const secret = ENV.cookieSecret;
-    return new TextEncoder().encode(secret);
+    const key = new TextEncoder().encode(secret);
+    if (!secret.trim() || key.byteLength < 32) {
+      throw new Error("JWT_SECRET must contain at least 32 bytes of securely generated secret material");
+    }
+    return key;
   }
 
   /**
@@ -208,13 +212,15 @@ class SDKServer {
       const secretKey = this.getSessionSecret();
       const { payload } = await jwtVerify(cookieValue, secretKey, {
         algorithms: ["HS256"],
+        requiredClaims: ["exp"],
       });
       const { openId, appId, name } = payload as Record<string, unknown>;
 
       if (
         !isNonEmptyString(openId) ||
         !isNonEmptyString(appId) ||
-        !isNonEmptyString(name)
+        appId !== ENV.appId ||
+        typeof name !== "string"
       ) {
         console.warn("[Auth] Session payload missing required fields");
         return null;

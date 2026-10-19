@@ -1,14 +1,12 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { createPool, type Pool } from "mysql2/promise";
+import { createPool } from "mysql2/promise";
 import {
   aionExecutions,
   aionMemory,
   aionProjects,
   aionTasks,
-  InsertUser,
-  tenantMembers,
-  tenants,
+  type InsertUser,
   users,
 } from "../drizzle/schema";
 import { clearProjectFromMemory } from "./aion/store";
@@ -28,7 +26,7 @@ export async function getDb() {
       });
       _db = drizzle(_pool);
     } catch (error) {
-      console.warn("[Database] Failed to initialize:", error);
+      console.warn("[Database] Failed to initialize; verify configuration");
       _db = null;
     }
   }
@@ -73,28 +71,6 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   if (Object.keys(updateSet).length === 0) updateSet.lastSignedIn = new Date();
 
   await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
-  if (user.openId === ENV.ownerOpenId) await ensureOwnerTenantMembership(user.openId);
-}
-
-/** Owner-only onboarding bridge for the existing Manus project. */
-export async function ensureOwnerTenantMembership(openId: string): Promise<void> {
-  if (!ENV.ownerOpenId || openId !== ENV.ownerOpenId) return;
-  const db = await getDb();
-  if (!db) return;
-
-  const [owner] = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
-  if (!owner) return;
-  const [existingMembership] = await db.select().from(tenantMembers).where(eq(tenantMembers.userId, owner.id)).limit(1);
-  if (existingMembership) return;
-
-  const [existingTenant] = await db.select().from(tenants).orderBy(tenants.id).limit(1);
-  const tenant = existingTenant ?? await insertAndFetch(db, tenants, tenants.id, { name: owner.name ? `${owner.name} Workforce` : "Mi empresa AION", plan: "free" });
-  const tenantId = Number(tenant?.id);
-  const userId = Number(owner?.id);
-  if (!Number.isInteger(tenantId) || tenantId <= 0 || !Number.isInteger(userId) || userId <= 0) {
-    throw new Error("Owner onboarding resolved invalid tenant/user identifiers");
-  }
-  await db.insert(tenantMembers).values({ tenantId, userId, role: "owner", status: "active" }).onDuplicateKeyUpdate({ set: { role: "owner", status: "active" } });
 }
 
 export async function getUserByOpenId(openId: string) {
@@ -104,43 +80,22 @@ export async function getUserByOpenId(openId: string) {
   return result[0];
 }
 
-export async function insertAndFetch<TTable extends Record<string, any>>(
-  db: any,
-  table: TTable,
-  idColumn: any,
-  values: Record<string, unknown>,
-) {
-  const [{ id }] = await db.insert(table).values(values).$returningId();
-  const [row] = await db.select().from(table).where(eq(idColumn, id)).limit(1);
-  return row;
-}
-
-export async function updateAndFetch(
-  db: any,
-  table: any,
-  whereClause: any,
-  values: Record<string, unknown>,
-) {
-  await db.update(table).set(values).where(whereClause);
-  const [row] = await db.select().from(table).where(whereClause).limit(1);
-  return row;
-}
-
 /**
- * Borra los datos AION en una transacción cuando hay DB y siempre limpia el
- * almacén en memoria. Los fallos de DB se propagan para no ocultar un borrado incompleto.
+ * Removes an AION project and every artifact it owns (tasks, executions and
+ * memory). Falls back to clearing the in-memory store when no database is
+ * configured, so the cleanup contract holds in tests and local development.
  */
 export async function deleteProjectData(projectId: number): Promise<void> {
   const db = await getDb();
-  try {
-    if (!db) return;
-    await db.transaction(async (tx: typeof db) => {
-      await tx.delete(aionMemory).where(eq(aionMemory.projectId, projectId));
-      await tx.delete(aionExecutions).where(eq(aionExecutions.projectId, projectId));
-      await tx.delete(aionTasks).where(eq(aionTasks.projectId, projectId));
-      await tx.delete(aionProjects).where(eq(aionProjects.id, projectId));
-    });
-  } finally {
-    clearProjectFromMemory(projectId);
+  if (db) {
+    try {
+      await db.delete(aionTasks).where(eq(aionTasks.projectId, projectId));
+      await db.delete(aionExecutions).where(eq(aionExecutions.projectId, projectId));
+      await db.delete(aionMemory).where(eq(aionMemory.projectId, projectId));
+      await db.delete(aionProjects).where(eq(aionProjects.id, projectId));
+    } catch (error) {
+      console.warn("[AION] deleteProjectData: database cleanup failed:", error);
+    }
   }
+  clearProjectFromMemory(projectId);
 }

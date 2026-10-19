@@ -1,15 +1,50 @@
+# dependencias
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# build
+dist/
+build/
+.next/
+out/
+target/
+*.egg-info/
+
+# entorno y secretos
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+
+# BELENTANI legacy — seguridad
+.env.*
+!.env.example
+*.pyc
+.vercel/
 # Dependencies
 **/node_modules
 .pnpm-store/
 
 # Build outputs
-dist/
-build/
 *.dist
 
 # Environment variables
-.env
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
@@ -22,17 +57,14 @@ build/
 *~
 
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
 
 # Logs
 logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -47,7 +79,6 @@ pids
 *.bak
 
 # Coverage directory used by tools like istanbul
-coverage/
 *.lcov
 
 # nyc test coverage
@@ -91,7 +122,6 @@ jspm_packages/
 .nuxt
 
 # Gatsby files
-.cache/
 
 # Storybook build outputs
 .out
@@ -112,3 +142,14 @@ temp/
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
 .project-config.json
+!.env.example
+
+# remediacion 2026-09-14
+node_modules/
+.env
+.env.*
+!.env.example
+.mimosa/
+__pycache__/
+.vercel/
+*.log

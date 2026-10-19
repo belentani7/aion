@@ -1,0 +1,479 @@
+{
+  "drive_zip_id": "1JblGz7HEZDj9oHeuCxUgYt-HjOe8XL5b",
+  "drive_patch_id": "1Yem8aQnnaq5Ksbfl-n4fZaMv8SH17Pa-",
+  "folder_fully_listed": true,
+  "patch_apply_check_exit": 0,
+  "patched_version": ".cache/unified/aion-drive-20261017",
+  "differences_from_candidate": [
+    {
+      "path": "package-lock.json",
+      "candidate_exists": true
+    },
+    {
+      "path": "vite.config.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "tsconfig.json",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/aion.security.test.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/db.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/aion.e2e.test.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "drizzle/schema.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "client/index.html",
+      "candidate_exists": true
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "candidate_exists": true
+    },
+    {
+      "path": "client/public/landing.html",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/aion/store.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/aion/router.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/aion/service.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/_core/sdk.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/_core/storageProxy.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/_core/index.ts",
+      "candidate_exists": true
+    },
+    {
+      "path": "server/_core/vite.ts",
+      "candidate_exists": true
+    }
+  ],
+  "zip_git_checks": [
+    {
+      "path": ".editorconfig",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".env.example",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/workflows/build.yml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".gitignore",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".prettierignore",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": ".prettierrc",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "LICENSE",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "README.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "SECURITY.md",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/index.html",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/public/landing.html",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/App.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/AIChatBox.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/DashboardLayout.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/DashboardLayoutSkeleton.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ErrorBoundary.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ManusDialog.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/Map.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/accordion.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/alert-dialog.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/alert.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/aspect-ratio.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/avatar.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/badge.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/breadcrumb.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/button-group.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/button.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/calendar.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/card.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/carousel.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/chart.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/checkbox.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/collapsible.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/command.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/context-menu.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/dialog.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/drawer.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/dropdown-menu.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/empty.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/field.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/form.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/hover-card.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/input-group.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/input-otp.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/input.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/item.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/kbd.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/label.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/menubar.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/navigation-menu.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/pagination.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/popover.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/progress.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/radio-group.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/resizable.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/scroll-area.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/select.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/separator.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/sheet.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/sidebar.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/skeleton.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/slider.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/sonner.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/spinner.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/switch.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/table.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/tabs.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/textarea.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/toggle-group.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/toggle.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/components/ui/tooltip.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/contexts/ThemeContext.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/hooks/useMobile.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/index.css",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/main.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/pages/ComponentShowcase.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/pages/Home.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "client/src/pages/NotFound.tsx",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "components.json",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "dev/__manus__/debug-collector.js",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "drizzle/0000_dizzy_hemingway.sql",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "package-lock.json",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "package.json",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "patches/wouter@3.7.1.patch",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "postcss.config.js",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "server/aion.e2e.test.ts",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "server/aion.security.test.ts",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "server/aion/router.ts",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "tsconfig.json",
+      "matches_claimed_git_commit": true
+    },
+    {
+      "path": "vite.config.ts",
+      "matches_claimed_git_commit": true
+    }
+  ]
+}

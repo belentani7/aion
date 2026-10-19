@@ -1,0 +1,24 @@
+const {chromium}=require('playwright');
+const {default:AxeBuilder}=require('@axe-core/playwright');
+const fs=require('fs');
+(async()=>{
+ const browser=await chromium.launch({args:['--no-sandbox']});
+ const context=await browser.newContext({viewport:{width:390,height:900},hasTouch:true});
+ const page=await context.newPage();
+ await page.goto('http://127.0.0.1:4184/components',{waitUntil:'networkidle'});
+ const slider=page.getByRole('slider').first();const before=await slider.getAttribute('aria-valuenow');
+ await slider.focus();await page.keyboard.press('ArrowRight');const keyboard=await slider.getAttribute('aria-valuenow');
+ const track=page.locator('[data-slot="slider-track"]').first();await track.scrollIntoViewIfNeeded();const box=await track.boundingBox();
+ await page.touchscreen.tap(box.x+box.width*.8,box.y+box.height/2);const touch=await slider.getAttribute('aria-valuenow');
+ await page.getByRole('button',{name:'Toggle color theme'}).click();await page.waitForTimeout(350);
+ const dark=await page.evaluate(()=>document.documentElement.classList.contains('dark'));
+ const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+ const violations=axe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}));
+ await page.goto('http://127.0.0.1:4184/',{waitUntil:'networkidle'});
+ const loginDisabled=await page.getByRole('button',{name:'Sign in'}).isDisabled();
+ const loginExplained=(await page.locator('body').innerText()).includes('Sign-in is not configured');
+ const result={engine:'Chromium, synthesized touch (not physical hardware)',slider:{before,afterKeyboard:keyboard,afterTouch:touch,keyboardChangesValue:before!==keyboard,touchChangesValue:keyboard!==touch},darkThemeApplied:dark,darkViolations:violations,loginDisabled,loginExplained};
+ result.passed=before!==keyboard&&keyboard!==touch&&dark&&violations.length===0&&loginDisabled&&loginExplained;
+ fs.writeFileSync('validation/evidence/aion-interaction.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+ await browser.close();process.exitCode=result.passed?0:1;
+})().catch(e=>{console.error(e.message);process.exit(1)});

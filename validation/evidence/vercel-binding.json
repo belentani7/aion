@@ -1,0 +1,18 @@
+{
+  "project_id": "prj_AUjP9ZBmqVJyM4SG3YoUAz6ydrsW",
+  "project": "aion",
+  "repository": "belentani7/aion",
+  "domain": "aion-eight-zeta.vercel.app",
+  "source": "Vercel project and project-domain listing; deployment trace pending",
+  "deployment": "dpl_5kJBYcoHxkD4E5xaYuG7UeQC5CnV",
+  "commit": "60d7faa88ba769b3725a88a6c28ab5ec6d867444",
+  "branch": "main",
+  "repository_id": 1348054320,
+  "configured_output_directory": "dist/public",
+  "observed_root_content_type": "application/javascript",
+  "current_settings_do_not_explain_deployed_response": true,
+  "current_public_repository_id": 1380543886,
+  "vercel_linked_repository_id": 1348054320,
+  "deployed_commit_is_ancestor_of_current_main": true,
+  "repository_binding_identity_mismatch": true
+}

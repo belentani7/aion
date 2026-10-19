@@ -1,5 +1,6 @@
 export type AionProjectRecord = {
   id: number;
+  ownerId: number;
   name: string;
   sourcePath: string;
   sourceType: string;
@@ -58,18 +59,11 @@ export function nextAionId(): number {
   return sequence++;
 }
 
-/** Remove one project's in-memory data without replacing shared array references. */
 export function clearProjectFromMemory(projectId: number): void {
-  const keepInPlace = <T>(rows: T[], shouldKeep: (row: T) => boolean) => {
-    let writeIndex = 0;
-    for (const row of rows) {
-      if (shouldKeep(row)) rows[writeIndex++] = row;
-    }
-    rows.length = writeIndex;
-  };
-
-  keepInPlace(aionMemoryStore.projects, (project) => project.id !== projectId);
-  keepInPlace(aionMemoryStore.tasks, (task) => task.projectId !== projectId);
-  keepInPlace(aionMemoryStore.executions, (execution) => execution.projectId !== projectId);
-  keepInPlace(aionMemoryStore.memory, (record) => record.projectId !== projectId);
+  aionMemoryStore.projects = aionMemoryStore.projects.filter(project => project.id !== projectId);
+  aionMemoryStore.tasks = aionMemoryStore.tasks.filter(task => task.projectId !== projectId);
+  aionMemoryStore.executions = aionMemoryStore.executions.filter(
+    execution => execution.projectId !== projectId
+  );
+  aionMemoryStore.memory = aionMemoryStore.memory.filter(record => record.projectId !== projectId);
 }

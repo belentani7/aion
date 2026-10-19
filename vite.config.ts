@@ -2,8 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
-import { defineConfig, type Plugin, type ViteDevServer } from "vite";
-import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+import { defineConfig, type Plugin, type PluginOption, type ViteDevServer } from "vite";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -149,9 +148,14 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
-
-export default defineConfig({
+export default defineConfig(async ({ command }) => {
+  const plugins: PluginOption[] = [react(), tailwindcss()];
+  // Editor/session instrumentation is opt-in and never part of a production build.
+  if (command === "serve" && process.env.ENABLE_MANUS_DEV_TOOLS === "1") {
+    const { vitePluginManusRuntime } = await import("vite-plugin-manus-runtime");
+    plugins.push(vitePluginManusRuntime(), vitePluginManusDebugCollector());
+  }
+  return {
   plugins,
   resolve: {
     alias: {
@@ -168,7 +172,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks(id) {
+        manualChunks(id: string) {
           if (!id.includes("node_modules")) return undefined;
           if (id.includes("/react/") || id.includes("/react-dom/") || id.includes("/scheduler/")) return "react-vendor";
           if (id.includes("/lucide-react/")) return "icons-vendor";
@@ -182,6 +186,7 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: [
+      ".e2b.app",
       ".manuspre.computer",
       ".manus.computer",
       ".manus-asia.computer",
@@ -195,4 +200,5 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
+  };
 });

@@ -1,0 +1,14 @@
+{
+  "drive_file_id": "1sH57rorkj1WAQdcH3YPrtI_pxnLF5YHU",
+  "refs": [
+    "refs/heads/main 501dae83bb22f54f487e75d379805b8b98fbc492",
+    "refs/remotes/origin/HEAD cd220fb4a21c9a034b93f2ea82f516fbbb23a6a5",
+    "refs/remotes/origin/main cd220fb4a21c9a034b93f2ea82f516fbbb23a6a5"
+  ],
+  "commit_count": 39,
+  "shallow": false,
+  "commits_not_in_public_mirror": [
+    "501dae83bb22f54f487e75d379805b8b98fbc492"
+  ],
+  "credentials_config_hooks_not_extracted": true
+}

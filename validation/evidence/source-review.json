@@ -1,0 +1,20 @@
+{
+  "text_files_scanned": 171,
+  "binary_or_encoding_skips": 0,
+  "findings": [
+    {
+      "path": ".cache/unified/aion/client/index.html",
+      "type": "main-landmark",
+      "status": "missing-static",
+      "review": "React root shell; rendered Home contains main landmark, checked in browser"
+    },
+    {
+      "path": ".cache/unified/aion/server/storage.proxy.test.ts",
+      "line": 5,
+      "type": "assigned-secret-candidate",
+      "status": "candidate-not-validated",
+      "review": "Mock provider value in regression test; not a live credential"
+    }
+  ],
+  "scope": "Current source snapshot only; pattern scan does not prove absence of all secrets and does not cover every historical blob"
+}
