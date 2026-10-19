@@ -32,6 +32,11 @@ describe("AION audit workflow", () => {
       expect(audited.project.id).toBe(imported.projectId);
       expect((await caller.aion.executions({ projectId: imported.projectId })).length).toBeGreaterThanOrEqual(3);
       expect((await caller.aion.memory({ projectId: imported.projectId })).length).toBeGreaterThanOrEqual(1);
-    } finally { await deleteProjectData(imported.projectId); }
+    } finally {
+      await deleteProjectData(imported.projectId);
+    }
+
+    expect(await caller.aion.executions({ projectId: imported.projectId })).toEqual([]);
+    expect(await caller.aion.memory({ projectId: imported.projectId })).toEqual([]);
   }, 15000);
 });

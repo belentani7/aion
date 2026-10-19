@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .left-panel {
+        width: 65%;
+        padding-top: 120px;
+        padding-left: 80px;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+      }
+      .right-panel {
+        width: 35%;
+        position: relative;
+        background: #0F251D;
+        overflow: hidden;
+      }
+      .accent-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 100%;
+        background: #E67E22;
+      }
+      .title {
+        font-size: 56px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+      .cta-list {
+        list-style: none;
+      }
+      /* Reduced inner spacing to lower total height */
+      .cta-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 12px; /* reduced from 24px */
+      }
+      .cta-icon {
+        font-size: 28px;
+        color: #E67E22;
+        margin-right: 24px;
+        padding-top: 2px;
+      }
+      .cta-content {
+        max-width: 500px;
+      }
+      .cta-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0F251D;
+        margin-bottom: 8px;
+      }
+      .cta-text {
+        font-size: 18px;
+        color: #2C3E35;
+        line-height: 1.5;
+      }
+      .footer-note {
+        margin-top: auto;
+        padding-top: 24px;
+        font-size: 16px;
+        color: #2C3E35;
+        font-weight: 400;
+      }
+      .footer-note strong { color: #E67E22; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="left-panel">
+            <h2 class="title">Transforme a gestão da sua força de trabalho hoje mesmo</h2>
+            <div class="cta-list">
+                <div class="cta-item">
+                    <i class="fas fa-desktop cta-icon"></i>
+                    <div class="cta-content">
+                        <div class="cta-title">Demonstração Personalizada</div>
+                        <p class="cta-text">Solicite uma sessão profunda adaptada às convenções trabalhistas e necessidades operacionais específicas da sua organização.</p>
+                    </div>
+                </div>
+                <div class="cta-item">
+                    <i class="fas fa-vial cta-icon"></i>
+                    <div class="cta-content">
+                        <div class="cta-title">Acesso ao Sandbox ao Vivo</div>
+                        <p class="cta-text">Teste o ambiente multi-tenant em tempo real e verifique você mesmo a integridade do ledger SHA-256.</p>
+                    </div>
+                </div>
+                <div class="cta-item">
+                    <i class="fas fa-shield-alt cta-icon"></i>
+                    <div class="cta-content">
+                        <div class="cta-title">Avaliação de Riscos</div>
+                        <p class="cta-text">Descubra como a AION Workforce elimina o risco regulatório e otimiza seus custos trabalhistas desde o primeiro dia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-note">AION Workforce <strong>Enterprise Edition</strong> | 2026</div>
+        </div>
+        <div class="right-panel">
+            <div class="accent-bar"></div>
+        </div>
+    </div>
+</body>
+</html>

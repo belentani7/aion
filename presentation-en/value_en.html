@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .content-side {
+        width: 50%;
+        padding-top: 80px;
+        padding-left: 80px;
+        padding-right: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .image-side {
+        width: 50%;
+        position: relative;
+        background: #0F251D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .title {
+        font-size: 42px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 40px;
+      }
+      .feature-item {
+        margin-bottom: 32px;
+        padding-top: 20px;
+        border-top: 2px solid #E67E22;
+      }
+      .feature-title {
+        font-weight: 800;
+        color: #E67E22;
+        font-size: 20px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .feature-text {
+        font-size: 18px;
+        color: #2C3E35;
+        line-height: 1.5;
+      }
+      .main-image {
+        width: 540px;
+        height: 400px;
+        object-fit: cover;
+        border: 10px solid #E2E8E4;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-side">
+            <h2 class="title">Shift automation with bank-grade security</h2>
+            <div class="feature-item">
+                <div class="feature-title">Unified Management</div>
+                <p class="feature-text">Shift management, payroll, agreements, and incidents in a single deterministic engine.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-title">Immutable Ledger</div>
+                <p class="feature-text">Protected by SHA-256 technology ensuring that records are tamper-proof.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-title">PVC-U Protocol</div>
+                <p class="feature-text">Universal Validation Protocol for high-assurance operations and AI governance.</p>
+            </div>
+        </div>
+        <div class="image-side">
+            <img src="/home/ubuntu/upload/search_images/CnyTlgdMiTp2.png" class="main-image" alt="Workforce Analytics">
+        </div>
+    </div>
+</body>
+</html>

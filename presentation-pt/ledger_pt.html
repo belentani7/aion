@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .image-side {
+        width: 50%;
+        background: #0F251D;
+        display: flex;
+        align-items: flex-start; /* place image at top to avoid extra vertical centering space */
+        justify-content: center;
+        padding-top: 80px; /* align image top with content title top */
+      }
+      .content-side {
+        width: 50%;
+        padding-top: 80px; /* keep title top padding unchanged */
+        padding-left: 40px;
+        padding-right: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        font-size: 42px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 24px; /* reduced to pull content up */
+        border-right: 12px solid #E67E22;
+        padding-right: 24px;
+        text-align: right;
+      }
+      .feature-box {
+        background: #FFFFFF;
+        padding-top: 20px; /* reduced inner padding */
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 16px; /* reduced spacing between boxes */
+        border-left: 4px solid #0F251D;
+      }
+      .feature-title {
+        font-weight: 800;
+        color: #E67E22;
+        font-size: 18px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .feature-text {
+        font-size: 17px;
+        color: #2C3E35;
+        line-height: 1.5;
+      }
+      .pipeline-image {
+        width: 580px;
+        height: 320px; /* reduced image height to reduce overall page height */
+        object-fit: contain;
+        background: #0F251D;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="image-side">
+            <img src="/home/ubuntu/upload/search_images/DQLWuunEIM0O.png" class="pipeline-image" alt="Pipeline de Dados de Segurança">
+        </div>
+        <div class="content-side">
+            <h2 class="title">Cadeia criptográfica verificável em tempo real</h2>
+            <div class="feature-box">
+                <div class="feature-title">Registros Imutáveis</div>
+                <p class="feature-text">Nenhum registro de turno, entrada de folha de pagamento ou modificação do sistema pode ser alterado retroativamente após o processamento.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">Encadeamento SHA-256</div>
+                <p class="feature-text">Cada evento operacional está vinculado criptograficamente ao anterior, criando uma trilha de auditoria inquebrável.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">Verificação Pública</div>
+                <p class="feature-text">Um endpoint dedicado (/api/audit/verify) permite verificações de integridade em tempo real durante inspeções trabalhistas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

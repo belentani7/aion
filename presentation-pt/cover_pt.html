@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .left-panel {
+        width: 65%;
+        padding: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 2;
+      }
+      .right-panel {
+        width: 35%;
+        position: relative;
+        background: #0F251D;
+        overflow: hidden;
+      }
+      .accent-shape {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: #E67E22;
+        transform: rotate(45deg);
+      }
+      .title {
+        font-size: 64px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+      .subtitle {
+        font-size: 24px;
+        font-weight: 400;
+        color: #2C3E35;
+        max-width: 600px;
+        margin-bottom: 48px;
+      }
+      .author {
+        font-size: 18px;
+        color: #E67E22;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .logo-placeholder {
+        position: absolute;
+        top: 80px;
+        left: 80px;
+        font-weight: 800;
+        font-size: 32px;
+        color: #0F251D;
+      }
+      .logo-placeholder span { color: #E67E22; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="logo-placeholder">AION<span>.</span></div>
+        <div class="left-panel">
+            <h1 class="title">Gestão Inteligente de Pessoal e Auditoria Imutável</h1>
+            <p class="subtitle">Plataforma SaaS multi-tenant com conformidade regulatória automatizada, ledger criptográfico e governança de IA para a empresa moderna.</p>
+            <div class="author">AION Workforce Enterprise Team</div>
+        </div>
+        <div class="right-panel">
+            <div class="accent-shape"></div>
+        </div>
+    </div>
+</body>
+</html>

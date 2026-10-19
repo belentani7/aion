@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        position: relative;
+      }
+      .header-quadrant {
+        height: 240px;
+        padding-top: 80px;
+        padding-left: 80px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .title {
+        font-size: 48px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.2;
+        border-left: 12px solid #E67E22;
+        padding-left: 24px;
+      }
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding-top: 36px;
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+      .module {
+        background: #FFFFFF;
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        min-height: 200px;
+        border-top: 4px solid #0F251D;
+      }
+      .module-title {
+        font-weight: 800;
+        color: #E67E22;
+        margin-bottom: 16px;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+      .module-text {
+        font-size: 18px;
+        color: #2C3E35;
+        line-height: 1.6;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-quadrant">
+            <h2 class="title">La complejidad laboral actual exige<br>sistemas incorruptibles</h2>
+        </div>
+        <div class="content-grid">
+            <div class="module">
+                <div class="module-title">Rigor Normativo</div>
+                <p class="module-text">Las organizaciones se enfrentan a normativas estrictas y auditorías laborales impredecibles que exigen precisión absoluta.</p>
+            </div>
+            <div class="module">
+                <div class="module-title">Gestión de Convenios</div>
+                <p class="module-text">Los convenios colectivos complejos son difíciles de gestionar manualmente, lo que genera riesgos y errores salariales.</p>
+            </div>
+            <div class="module">
+                <div class="module-title">Integridad de Datos</div>
+                <p class="module-text">Los sistemas tradicionales son vulnerables a la manipulación de nóminas y carecen de pruebas criptográficas de historial.</p>
+            </div>
+            <div class="module">
+                <div class="module-title">Brechas Operativas</div>
+                <p class="module-text">El aislamiento garantizado de datos entre unidades de negocio o inquilinos suele faltar en las plataformas heredadas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

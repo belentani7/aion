@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        position: relative;
+      }
+      .header-quadrant {
+        height: 200px;
+        padding-top: 60px;
+        padding-left: 80px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .title {
+        font-size: 44px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        border-left: 12px solid #E67E22;
+        padding-left: 24px;
+      }
+      .table-container {
+        padding-top: 40px;
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #FFFFFF;
+        border-top: 4px solid #0F251D;
+      }
+      th {
+        background: #0F251D;
+        color: #E2E8E4;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: left;
+        font-size: 18px;
+      }
+      td {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom: 1px solid #E2E8E4;
+        color: #2C3E35;
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      .plan-name {
+        font-weight: 800;
+        color: #E67E22;
+      }
+      .check-icon {
+        color: #E67E22;
+        margin-right: 8px;
+      }
+      .footer-note {
+        padding-top: 30px;
+        padding-left: 80px;
+        font-size: 16px;
+        color: #2C3E35;
+        font-weight: 400;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-quadrant">
+            <h2 class="title">Scalable architecture tailored to<br>every enterprise stage</h2>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Free Plan</th>
+                        <th>Pro Plan</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: 800;">Capacity</td>
+                        <td>Up to 5 Employees</td>
+                        <td>Up to 100 Employees</td>
+                        <td class="plan-name">Unlimited Capacity</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 800;">Security</td>
+                        <td>SHA-256 Ledger</td>
+                        <td>SHA-256 + PVC-U</td>
+                        <td>Full AI Governance</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 800;">Modules</td>
+                        <td>Basic Shifts</td>
+                        <td>Agreements & Absences</td>
+                        <td>Custom Rules Engine</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 800;">Retention</td>
+                        <td>7 Days</td>
+                        <td>365 Days</td>
+                        <td>Unlimited History</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 800;">Billing</td>
+                        <td>Free Forever</td>
+                        <td>Stripe Monthly</td>
+                        <td>Custom Enterprise</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-globe check-icon"></i> All plans include multi-language support and regional formatting.
+        </div>
+    </div>
+</body>
+</html>

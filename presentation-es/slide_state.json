@@ -1,0 +1,95 @@
+{
+  "project_info": {
+    "title": "Gestión Inteligente de Personal y Auditoría Inmutable para la Empresa Moderna",
+    "created": 1787065153.478,
+    "last_updated": 1787065223.523,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "cover_es",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "challenge_es",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "value_es",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "architecture_es",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "ledger_es",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "modules_es",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "plans_es",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "next_steps_es",
+      "state": "edited",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover_es",
+      "title": "Gestión Inteligente de Personal y Auditoría Inmutable para la Empresa Moderna",
+      "summary": "Plataforma SaaS multi-tenant con cumplimiento normativo automatizado, ledger criptográfico y gobernanza de IA."
+    },
+    {
+      "id": "challenge_es",
+      "title": "La complejidad laboral actual exige sistemas incorruptibles y multi-tenant",
+      "summary": "Las organizaciones se enfrentan a normativas estrictas, auditorías laborales impredecibles y gestión de convenios complejos."
+    },
+    {
+      "id": "value_es",
+      "title": "AION Workforce combina automatización de turnos con seguridad criptográfica de nivel bancario",
+      "summary": "Unificamos la gestión de turnos, nóminas, convenios, ausencias e incidencias bajo un motor determinista protegido por SHA-256."
+    },
+    {
+      "id": "architecture_es",
+      "title": "Aislamiento estricto de datos por tenant y trazabilidad sin fisuras",
+      "summary": "Cada organización opera en un espacio rigurosamente aislado en base de datos con control de roles y gobernanza de IA.",
+      "image_plan": "/home/ubuntu/upload/search_images/5ldHJ922fdVM.png - Architecture and data flow diagram fits the multi-tenant architecture and security slide."
+    },
+    {
+      "id": "ledger_es",
+      "title": "Cada evento operativo genera una cadena criptográfica verificable en tiempo real",
+      "summary": "Ningún registro puede alterarse retroactivamente, con un endpoint público de verificación que garantiza integridad total.",
+      "image_plan": "/home/ubuntu/upload/search_images/DQLWuunEIM0O.png - Security data pipeline architecture fits the cryptographic audit chain and immutable ledger slide."
+    },
+    {
+      "id": "modules_es",
+      "title": "Automatización salarial avanzada adaptada a convenios complejos",
+      "summary": "El motor salarial calcula horas regulares, extra, nocturnidad y festivos según reglas versionadas por convenio.",
+      "image_plan": "/home/ubuntu/upload/search_images/nF4O0JDbKtJE.webp - Dashboard/analytics graphic fits the enterprise modules and salary automation slide."
+    },
+    {
+      "id": "plans_es",
+      "title": "Arquitectura escalable con planes adaptados a cada etapa empresarial",
+      "summary": "Desde planes Free para equipos iniciales hasta planes Pro y Enterprise con capacidad ilimitada y Stripe integrado."
+    },
+    {
+      "id": "next_steps_es",
+      "title": "Transforme la gestión de su fuerza laboral hoy mismo",
+      "summary": "Solicite una demostración personalizada, pruebe el entorno en vivo y elimine el riesgo normativo."
+    }
+  ]
+}

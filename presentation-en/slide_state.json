@@ -1,0 +1,95 @@
+{
+  "project_info": {
+    "title": "Intelligent Workforce Management & Immutable Audit for the Modern Enterprise",
+    "created": 1787064958.598,
+    "last_updated": 1787065139.226,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "cover_en",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "challenge_en",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "value_en",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "architecture_en",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "ledger_en",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "modules_en",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "plans_en",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "next_steps_en",
+      "state": "edited",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover_en",
+      "title": "Intelligent Workforce Management & Immutable Audit for the Modern Enterprise",
+      "summary": "Multi-tenant SaaS platform featuring automated compliance, cryptographic ledger, and AI governance."
+    },
+    {
+      "id": "challenge_en",
+      "title": "Modern labor complexity demands incorruptible, multi-tenant systems",
+      "summary": "Organizations face stringent regulations, unpredictable labor audits, complex collective agreement management, and the risk of payroll tampering."
+    },
+    {
+      "id": "value_en",
+      "title": "AION Workforce combines shift automation with bank-grade cryptographic security",
+      "summary": "We unify shift management, payroll, collective agreements, absences, and incidents under a deterministic engine protected by an SHA-256 immutable ledger."
+    },
+    {
+      "id": "architecture_en",
+      "title": "Strict tenant data isolation and seamless traceability",
+      "summary": "Each organization operates within a rigorously isolated database space with role-based access control and AI governance.",
+      "image_plan": "/home/ubuntu/upload/search_images/5ldHJ922fdVM.png - Architecture and data flow diagram fits the multi-tenant architecture and security slide."
+    },
+    {
+      "id": "ledger_en",
+      "title": "Every operational event generates a verifiable cryptographic chain in real time",
+      "summary": "No shift record or payroll entry can be retroactively altered, with a public chain verification endpoint guaranteeing 100% integrity.",
+      "image_plan": "/home/ubuntu/upload/search_images/DQLWuunEIM0O.png - Security data pipeline architecture fits the cryptographic audit chain and immutable ledger slide."
+    },
+    {
+      "id": "modules_en",
+      "title": "Advanced salary automation tailored to complex labor agreements",
+      "summary": "The payroll engine calculates regular hours, overtime, night shifts, and holidays based on versioned rules from each collective agreement.",
+      "image_plan": "/home/ubuntu/upload/search_images/nF4O0JDbKtJE.webp - Dashboard/analytics graphic fits the enterprise modules and salary automation slide."
+    },
+    {
+      "id": "plans_en",
+      "title": "Scalable architecture with plans tailored to every enterprise stage",
+      "summary": "From Free plans for early teams to Pro and Enterprise tiers featuring unlimited capacity and integrated Stripe billing."
+    },
+    {
+      "id": "next_steps_en",
+      "title": "Transform your workforce management today",
+      "summary": "Request a personalized demo, test the live multi-tenant environment, and discover how AION Workforce eliminates regulatory risk."
+    }
+  ]
+}

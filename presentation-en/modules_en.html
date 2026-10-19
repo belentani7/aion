@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .content-area {
+        width: 55%;
+        padding-top: 80px;
+        padding-left: 80px;
+        padding-right: 60px;
+        display: flex;
+        flex-direction: column;
+      }
+      .visual-area {
+        width: 45%;
+        background: #0F251D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .accent-bar {
+        position: absolute;
+        left: 0;
+        top: 80px;
+        width: 8px;
+        height: 120px;
+        background: #E67E22;
+      }
+      .title {
+        font-size: 44px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 48px;
+        padding-left: 24px;
+      }
+      .feature-list {
+        list-style: none;
+        padding-left: 24px;
+      }
+      .feature-item {
+        margin-bottom: 32px;
+      }
+      .feature-header {
+        font-weight: 800;
+        color: #E67E22;
+        font-size: 22px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .feature-desc {
+        font-size: 18px;
+        color: #2C3E35;
+        line-height: 1.5;
+      }
+      .module-image {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+        border: 8px solid #E67E22;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <div class="accent-bar"></div>
+            <h2 class="title">Advanced salary automation for complex agreements</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-header">Deterministic Engine</div>
+                    <p class="feature-desc">Calculates regular hours, overtime, night shifts, and holidays with mathematical precision.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-header">Versioned Rules</div>
+                    <p class="feature-desc">Rules are stored as auditable JSON versions, ensuring historical accuracy for every payroll run.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-header">Native Integration</div>
+                    <p class="feature-desc">Seamlessly connected with the shift calendar and the SHA-256 immutable audit ledger.</p>
+                </div>
+            </div>
+        </div>
+        <div class="visual-area">
+            <img src="/home/ubuntu/upload/search_images/nF4O0JDbKtJE.webp" class="module-image" alt="Salary Automation Analytics">
+        </div>
+    </div>
+</body>
+</html>

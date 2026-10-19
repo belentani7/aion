@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .image-side {
+        width: 50%;
+        background: #0F251D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .content-side {
+        width: 50%;
+        padding-top: 80px;
+        padding-left: 60px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        font-size: 42px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 48px;
+        border-right: 12px solid #E67E22;
+        padding-right: 24px;
+        text-align: right;
+      }
+      .feature-box {
+        background: #FFFFFF;
+        padding-top: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #0F251D;
+      }
+      .feature-title {
+        font-weight: 800;
+        color: #E67E22;
+        font-size: 18px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .feature-text {
+        font-size: 17px;
+        color: #2C3E35;
+        line-height: 1.5;
+      }
+      .pipeline-image {
+        width: 580px;
+        height: 360px;
+        object-fit: contain;
+        background: #0F251D;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="image-side">
+            <img src="/home/ubuntu/upload/search_images/DQLWuunEIM0O.png" class="pipeline-image" alt="Pipeline de Datos de Seguridad">
+        </div>
+        <div class="content-side">
+            <h2 class="title">Cadena criptográfica verificable en tiempo real</h2>
+            <div class="feature-box">
+                <div class="feature-title">Registros Inmutables</div>
+                <p class="feature-text">Ningún registro de turno, entrada de nómina o modificación del sistema puede alterarse retroactivamente una vez procesado.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">Encadenamiento SHA-256</div>
+                <p class="feature-text">Cada evento operativo está vinculado criptográficamente al anterior, creando una pista de auditoría inquebrantable.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">Verificación Pública</div>
+                <p class="feature-text">Un endpoint dedicado (/api/audit/verify) permite comprobaciones de integridad en tiempo real durante inspecciones laborales.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

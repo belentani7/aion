@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; overflow: hidden; }
+      .slide-container { 
+        width: 1280px; 
+        min-height: 720px; 
+        background: #E2E8E4; 
+        display: flex;
+        position: relative;
+      }
+      .image-panel {
+        width: 55%;
+        background: #0F251D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .content-panel {
+        width: 45%;
+        padding-top: 80px;
+        padding-left: 60px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        font-size: 42px;
+        font-weight: 800;
+        color: #0F251D;
+        line-height: 1.1;
+        margin-bottom: 48px;
+      }
+      .info-block {
+        margin-bottom: 40px;
+        padding-top: 24px;
+        border-top: 4px solid #E67E22;
+      }
+      .info-title {
+        font-weight: 800;
+        color: #0F251D;
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+      .info-text {
+        font-size: 18px;
+        color: #2C3E35;
+        line-height: 1.6;
+      }
+      .diagram-img {
+        width: 640px;
+        height: 480px;
+        object-fit: contain;
+        border: 2px solid #E67E22;
+        background: #FFFFFF;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="image-panel">
+            <img src="/home/ubuntu/upload/search_images/5ldHJ922fdVM.png" class="diagram-img" alt="Arquitectura y Flujo de Datos">
+        </div>
+        <div class="content-panel">
+            <h2 class="title">Aislamiento estricto de datos y trazabilidad sin fisuras</h2>
+            <div class="info-block">
+                <div class="info-title">Espacio de Base de Datos Aislado</div>
+                <p class="info-text">Cada organización opera en un entorno rigurosamente separado, evitando cualquier fuga de datos entre inquilinos.</p>
+            </div>
+            <div class="info-block">
+                <div class="info-title">RBAC y Gobernanza de IA</div>
+                <p class="info-text">El control de acceso granular basado en roles junto con las subesferas de gobernanza de IA garantiza que cada operación sea autorizada y validada.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+networks:
+  aion-internal:
+    driver: bridge
+  aion-public:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: aion_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-aion_workforce}
+      MYSQL_USER: ${MYSQL_USER:-aion_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_ROOT_PASSWORD\" mysqladmin ping -h localhost -u root --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+    networks:
+      - aion-internal
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "1.0"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: aion_app
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: mysql://${MYSQL_USER:-aion_user}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE:-aion_workforce}
+      DB_POOL_MAX: 10
+      COMPLIANCE_API_URL: http://compliance:8080
+      SCHEDULING_API_URL: http://scheduling:8081
+      DILIGENCE_API_URL: http://diligence:8082
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      compliance:
+        condition: service_started
+      scheduling:
+        condition: service_started
+      diligence:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - aion-internal
+      - aion-public
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "2.0"
+
+  compliance:
+    build:
+      context: ./services/compliance
+      dockerfile: Dockerfile
+    container_name: aion_compliance
+    environment:
+      JURISDICTION: ${COMPLIANCE_JURISDICTION:-ES}
+      PORT: 8080
+    ports:
+      - "${COMPLIANCE_PORT:-8080}:8080"
+    restart: unless-stopped
+    networks:
+      - aion-internal
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+
+  scheduling:
+    build:
+      context: ./services/scheduling
+      dockerfile: Dockerfile
+    container_name: aion_scheduling
+    environment:
+      PORT: 8081
+    ports:
+      - "${SCHEDULING_PORT:-8081}:8081"
+    restart: unless-stopped
+    networks:
+      - aion-internal
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "1.0"
+
+  diligence:
+    build:
+      context: ./services/diligence
+      dockerfile: Dockerfile
+    container_name: aion_diligence
+    environment:
+      PORT: 8082
+    ports:
+      - "${DILIGENCE_PORT:-8082}:8082"
+    restart: unless-stopped
+    networks:
+      - aion-internal
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+
+volumes:
+  mysqldata:
