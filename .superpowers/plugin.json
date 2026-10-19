@@ -1,0 +1,39 @@
+{
+  "name": "aion-superpowers",
+  "displayName": "AION Superpowers",
+  "version": "1.0.0",
+  "description": "AION Unified domain skills: workforce management, compliance, audit trail, PVC-U validation",
+  "author": {
+    "name": "Pedro Belentani",
+    "email": "pedro@belentani.com"
+  },
+  "homepage": "https://github.com/belentani/aion-unified",
+  "repository": "https://github.com/belentani/aion-unified",
+  "license": "MIT",
+  "keywords": [
+    "aion",
+    "workforce",
+    "compliance",
+    "audit",
+    "pvcu",
+    "payroll",
+    "shifts",
+    "multi-tenant"
+  ],
+  "skills": "./.superpowers/skills/",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .superpowers/hooks/session-start.sh",
+            "shell": "bash",
+            "async": false
+          }
+        ]
+      }
+    ]
+  }
+}

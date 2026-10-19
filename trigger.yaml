@@ -1,0 +1,39 @@
+# Cloud Build Trigger Configuration for AION Unified
+# Apply AFTER creating the GitHub repo: gcloud builds triggers create github --config=trigger.yaml
+
+github:
+  owner: belentani7
+  name: aion-unified
+  push:
+    branch: ^main$
+
+filename: cloudbuild.yaml
+
+includedFiles:
+  - '**/*.ts'
+  - '**/*.tsx'
+  - '**/*.json'
+  - '**/*.yaml'
+  - '**/*.yml'
+  - 'Dockerfile*'
+  - 'docker-compose*'
+  - 'cloudbuild.yaml'
+  - '.github/workflows/**'
+
+ignoredFiles:
+  - '**/*.md'
+  - '**/*.txt'
+  - '**/*.png'
+  - '**/*.jpg'
+  - '**/*.svg'
+  - 'docs/**'
+  - 'tests/**'
+  - '.gitignore'
+  - '.prettier*'
+  - '.eslint*'
+
+substitutions:
+  _REGION: 'europe-west1'
+  _SERVICE_NAME: 'aion-staging'
+
+description: 'AION Unified CI/CD - Audit → Lint → Test → Build → Deploy to Cloud Run Staging'

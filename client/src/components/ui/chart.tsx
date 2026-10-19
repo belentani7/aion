@@ -6,9 +6,6 @@ import { cn } from "@/lib/utils";
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
 
-const SAFE_COLOR_RE =
-  /^#[0-9a-fA-F]{3,8}$|^rgba?\([^)]*\)$|^hsla?\([^)]*\)$/;
-
 export type ChartConfig = {
   [k in string]: {
     label?: React.ReactNode;
@@ -91,9 +88,7 @@ ${colorConfig
     const color =
       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
       itemConfig.color;
-    if (!color) return null;
-    const safeColor = SAFE_COLOR_RE.test(color) ? color : "transparent";
-    return `  --color-${key}: ${safeColor};`;
+    return color ? `  --color-${key}: ${color};` : null;
   })
   .join("\n")}
 }

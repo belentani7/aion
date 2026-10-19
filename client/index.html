@@ -1,12 +1,41 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
+
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AION</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>AION Workforce</title>    
+    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      const analyticsEndpoint = (import.meta.env.VITE_ANALYTICS_ENDPOINT || '').trim();
+      const analyticsWebsiteId = (import.meta.env.VITE_ANALYTICS_WEBSITE_ID || '').trim();
+      if (analyticsEndpoint && analyticsWebsiteId) {
+        try {
+          const endpoint = new URL(analyticsEndpoint);
+          if (endpoint.protocol === 'https:' && !endpoint.username && !endpoint.password) {
+            endpoint.pathname = `${endpoint.pathname.replace(/\/+$/, '')}/umami`;
+            const analyticsScript = document.createElement('script');
+            analyticsScript.src = endpoint.toString();
+            analyticsScript.defer = true;
+            analyticsScript.dataset.websiteId = analyticsWebsiteId.trim();
+            document.head.append(analyticsScript);
+          }
+        } catch {
+          // Invalid or untrusted analytics configuration leaves tracking disabled.
+        }
+      }
+    </script>
   </body>
+
 </html>

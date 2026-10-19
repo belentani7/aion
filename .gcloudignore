@@ -1,0 +1,81 @@
+# .gcloudignore - Files/directories to ignore when deploying to GCP
+
+# Version control
+.git
+.gitignore
+.github
+
+# Documentation
+docs/
+*.md
+!cloudbuild.yaml
+!trigger.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Docker
+.dockerignore
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test files
+tests/
+*.test.ts
+*.spec.ts
+*.test.tsx
+*.spec.tsx
+
+# Local development
+*.local.*
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Secrets (should use Secret Manager instead)
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Coverage reports
+*.lcov
+
+# TypeScript cache
+*.tsbuildinfo
