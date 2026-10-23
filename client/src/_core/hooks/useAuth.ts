@@ -14,6 +14,17 @@ export function useAuth(options?: UseAuthOptions) {
   // the state cookie, so calling it per render would overwrite the cookie and
   // desync it from an in-flight login's `state`.
   const { redirectOnUnauthenticated = false, redirectPath } = options ?? {};
+
+  useEffect(() => {
+    // Best-effort removal of user profiles written by older releases.
+    // A restricted browser may reject storage access; authentication must
+    // continue without persistent browser storage.
+    try {
+      localStorage.removeItem("manus-runtime-user-info");
+    } catch {
+      // Storage can be disabled by browser policy or privacy mode.
+    }
+  }, []);
   const utils = trpc.useUtils();
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
