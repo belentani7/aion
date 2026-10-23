@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import ErrorBoundary from "../client/src/components/ErrorBoundary";
-import { useAuth } from "../client/src/_core/hooks/useAuth";
+import { clearLegacyProfileCache, useAuth } from "../client/src/_core/hooks/useAuth";
 
 vi.mock("@/const", () => ({ startLogin: vi.fn() }));
 vi.mock("@/lib/trpc", () => ({
@@ -33,6 +33,16 @@ vi.mock("@/lib/trpc", () => ({
 afterEach(() => vi.unstubAllGlobals());
 
 describe("client privacy and recovery", () => {
+  it("removes a legacy profile when storage works and tolerates blocked storage", () => {
+    const removeItem = vi.fn();
+    clearLegacyProfileCache({ removeItem });
+    expect(removeItem).toHaveBeenCalledWith("manus-runtime-user-info");
+
+    expect(() => clearLegacyProfileCache({
+      removeItem: () => { throw new Error("SecurityError"); },
+    })).not.toThrow();
+  });
+
   it("renders an authenticated session without writing profile data to blocked storage", () => {
     const setItem = vi.fn(() => {
       throw new Error("SecurityError: storage is disabled");
