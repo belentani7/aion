@@ -8,6 +8,17 @@ type UseAuthOptions = {
   redirectPath?: string;
 };
 
+// Older versions persisted the authenticated profile in localStorage.
+// Remove that legacy copy on mount without making login depend on storage.
+export function clearLegacyProfileCache(storage?: Pick<Storage, "removeItem">) {
+  try {
+    const target = storage ?? (typeof localStorage === "undefined" ? undefined : localStorage);
+    target?.removeItem("manus-runtime-user-info");
+  } catch {
+    // Browser storage may be blocked or inaccessible.
+  }
+}
+
 export function useAuth(options?: UseAuthOptions) {
   // Login is started via startLogin() in the effect below, only when we actually
   // navigate — never during render. startLogin() mints a one-time nonce + writes
@@ -16,14 +27,7 @@ export function useAuth(options?: UseAuthOptions) {
   const { redirectOnUnauthenticated = false, redirectPath } = options ?? {};
 
   useEffect(() => {
-    // Best-effort removal of user profiles written by older releases.
-    // A restricted browser may reject storage access; authentication must
-    // continue without persistent browser storage.
-    try {
-      localStorage.removeItem("manus-runtime-user-info");
-    } catch {
-      // Storage can be disabled by browser policy or privacy mode.
-    }
+    clearLegacyProfileCache();
   }, []);
   const utils = trpc.useUtils();
 
