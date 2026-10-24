@@ -27,12 +27,14 @@ function App() {
   return (
     <ErrorBoundary>
       <I18nProvider>
-      <ThemeProvider defaultTheme="light" switchable>
-        <TooltipProvider>
-          <Toaster />
-          <Suspense fallback={<main role="status" className="p-6">Loading Aion…</main>}><Router /></Suspense>
-        </TooltipProvider>
-      </ThemeProvider>
+        <ThemeProvider defaultTheme="light" switchable>
+          <TooltipProvider>
+            <Toaster />
+            <Suspense fallback={<main role="status" className="p-6">Loading Aion…</main>}>
+              <Router />
+            </Suspense>
+          </TooltipProvider>
+        </ThemeProvider>
       </I18nProvider>
     </ErrorBoundary>
   );
