@@ -8,7 +8,21 @@ import { trpc } from "@/lib/trpc";
 import { Activity, ArrowLeft, Bot, CheckCircle2, Database, ExternalLink, LockKeyhole, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 import { useI18n } from "@/contexts/I18nContext";
-import { localizeFailureMode, localizeProfileDescription, localizeSourceField, localizeStatus } from "@/i18n";
+import { localizeFailureMode, localizeProfileDescription, localizeSourceField, localizeStatus, type Language } from "@/i18n";
+
+// Error messages follow the same ten-locale policy as the rest of the product.
+const retryCopy: Record<Language, { unavailable: string; retry: string }> = {
+  es: { unavailable: "No se ha podido consultar el catálogo. No se han aplicado cambios.", retry: "Reintentar" },
+  en: { unavailable: "The catalogue could not be loaded. No changes were made.", retry: "Try again" },
+  pt: { unavailable: "Não foi possível carregar o catálogo. Nenhuma alteração foi feita.", retry: "Tentar novamente" },
+  fr: { unavailable: "Impossible de charger le catalogue. Aucune modification effectuée.", retry: "Réessayer" },
+  de: { unavailable: "Der Katalog konnte nicht geladen werden. Es wurden keine Änderungen vorgenommen.", retry: "Erneut versuchen" },
+  it: { unavailable: "Impossibile caricare il catalogo. Nessuna modifica effettuata.", retry: "Riprova" },
+  zh: { unavailable: "无法加载目录。未进行任何更改。", retry: "重试" },
+  ja: { unavailable: "カタログを読み込めませんでした。変更は行われていません。", retry: "再試行" },
+  ru: { unavailable: "Не удалось загрузить каталог. Изменения не вносились.", retry: "Повторить" },
+  ar: { unavailable: "تعذّر تحميل الفهرس. لم يتم إجراء أي تغييرات.", retry: "إعادة المحاولة" },
+};
 
 const riskCopy = {
   low: { key: "riskLow", tone: "bg-slate-100 text-slate-700 border-slate-200" },
@@ -47,8 +61,8 @@ export default function ValidationCenter() {
   if (profiles.error || sources.error) {
     return <main role="alert" className="min-h-screen bg-background p-6">
       <h1 className="text-2xl font-semibold">{t('validationTitle')}</h1>
-      <p className="mt-4">No se ha podido consultar el catálogo. No se han aplicado cambios.</p>
-      <Button className="mt-4" onClick={() => { void profiles.refetch(); void sources.refetch(); }}>Reintentar</Button>
+      <p className="mt-4">{retryCopy[language].unavailable}</p>
+      <Button className="mt-4" onClick={() => { void profiles.refetch(); void sources.refetch(); }}>{retryCopy[language].retry}</Button>
     </main>;
   }
 
