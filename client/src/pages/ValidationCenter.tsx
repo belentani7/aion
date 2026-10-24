@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { trpc } from "@/lib/trpc";
-import { Activity, ArrowLeft, Bot, CheckCircle2, Database, ExternalLink, LockKeyhole, ShieldCheck } from "lucide-react";
+import { Activity, ArrowLeft, Bot, Database, ExternalLink, LockKeyhole, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 import { useI18n } from "@/contexts/I18nContext";
 import { localizeFailureMode, localizeProfileDescription, localizeSourceField, localizeStatus, type Language } from "@/i18n";
@@ -79,7 +79,7 @@ export default function ValidationCenter() {
               <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{t('validationSubtitle')}</p>
             </div>
           </div>
-          <Badge className="w-fit gap-2 rounded-full border border-border bg-muted px-3 py-1.5 text-foreground"><CheckCircle2 className="size-4" /> {t('validationProfiles')} · v1.0.0</Badge>
+          <Badge className="w-fit gap-2 rounded-full border border-border bg-muted px-3 py-1.5 text-foreground">{t('validationProfiles')} · v1.0.0</Badge>
         </header>
 
         <section className="mt-8 grid gap-4 md:grid-cols-3" aria-label={t('validationTitle')}>
