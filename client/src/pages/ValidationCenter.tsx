@@ -41,6 +41,17 @@ export default function ValidationCenter() {
     return <main className="min-h-screen bg-background p-6"><div className="mx-auto max-w-xl glass-panel rounded-3xl p-8"><h1 className="text-2xl font-semibold">{t('validationTitle')}</h1><p className="mt-2 text-muted-foreground">{t('validationSubtitle')}</p><Link href="/"><Button className="mt-6">{t('validationBack')}</Button></Link></div></main>;
   }
 
+  if (profiles.isLoading || sources.isLoading) {
+    return <main role="status" aria-busy="true" className="min-h-screen bg-background p-6">{t('validationTitle')}…</main>;
+  }
+  if (profiles.error || sources.error) {
+    return <main role="alert" className="min-h-screen bg-background p-6">
+      <h1 className="text-2xl font-semibold">{t('validationTitle')}</h1>
+      <p className="mt-4">No se ha podido consultar el catálogo. No se han aplicado cambios.</p>
+      <Button className="mt-4" onClick={() => { void profiles.refetch(); void sources.refetch(); }}>Reintentar</Button>
+    </main>;
+  }
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
       <div className="aion-grid pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -49,17 +60,17 @@ export default function ValidationCenter() {
           <div className="flex items-center gap-3">
             <Link href="/"><Button variant="ghost" size="icon" className="focus-ring" aria-label={t('validationBack')}><ArrowLeft className="size-5" /></Button></Link>
             <div>
-              <div className="flex items-center gap-2 text-sm font-medium text-primary"><ShieldCheck className="size-4" /> {t('controlOperational')}</div>
+              <div className="flex items-center gap-2 text-sm font-medium text-primary"><ShieldCheck className="size-4" /> {t('validationTitle')}</div>
               <h1 className="mt-1 text-3xl font-semibold tracking-tight">{t('validationTitle')}</h1>
               <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{t('validationSubtitle')}</p>
             </div>
           </div>
-          <Badge className="w-fit gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-emerald-700"><CheckCircle2 className="size-4" /> {t('validationActive')} · v1.0.0</Badge>
+          <Badge className="w-fit gap-2 rounded-full border border-border bg-muted px-3 py-1.5 text-foreground"><CheckCircle2 className="size-4" /> {t('validationProfiles')} · v1.0.0</Badge>
         </header>
 
-        <section className="mt-8 grid gap-4 md:grid-cols-3" aria-label={t('controlOperational')}>
-          <Card className="glass-panel border-0"><CardContent className="p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t('activeLayers')}</span><LockKeyhole className="size-5 text-primary" /></div><p className="mt-3 text-3xl font-semibold">L0—L8</p><p className="mt-1 text-xs text-muted-foreground">{t('layersDescription')}</p></CardContent></Card>
-          <Card className="glass-panel border-0"><CardContent className="p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t('aiSpheres')}</span><Bot className="size-5 text-violet-600" /></div><p className="mt-3 text-3xl font-semibold">4-A · 2-A · 8</p><p className="mt-1 text-xs text-muted-foreground">{t('aiDescription')}</p></CardContent></Card>
+        <section className="mt-8 grid gap-4 md:grid-cols-3" aria-label={t('validationTitle')}>
+          <Card className="glass-panel border-0"><CardContent className="p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t('validationProfiles')}</span><LockKeyhole className="size-5 text-primary" /></div><p className="mt-3 text-3xl font-semibold">{profiles.data?.length ?? 0}</p><p className="mt-1 text-xs text-muted-foreground">{t('layersDescription')}</p></CardContent></Card>
+          <Card className="glass-panel border-0"><CardContent className="p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t('validationSources')}</span><Bot className="size-5 text-violet-600" /></div><p className="mt-3 text-3xl font-semibold">{sources.data?.length ?? 0}</p><p className="mt-1 text-xs text-muted-foreground">{t('sourceDescription')}</p></CardContent></Card>
           <Card className="glass-panel border-0"><CardContent className="p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{t('evidence')}</span><Activity className="size-5 text-emerald-600" /></div><p className="mt-3 text-3xl font-semibold">SHA-256</p><p className="mt-1 text-xs text-muted-foreground">{t('evidenceDescription')}</p></CardContent></Card>
         </section>
 
