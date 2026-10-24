@@ -8,12 +8,27 @@ type UseAuthOptions = {
   redirectPath?: string;
 };
 
+// Older versions persisted the authenticated profile in localStorage.
+// Remove that legacy copy on mount without making login depend on storage.
+export function clearLegacyProfileCache(storage?: Pick<Storage, "removeItem">) {
+  try {
+    const target = storage ?? (typeof localStorage === "undefined" ? undefined : localStorage);
+    target?.removeItem("manus-runtime-user-info");
+  } catch {
+    // Browser storage may be blocked or inaccessible.
+  }
+}
+
 export function useAuth(options?: UseAuthOptions) {
   // Login is started via startLogin() in the effect below, only when we actually
   // navigate — never during render. startLogin() mints a one-time nonce + writes
   // the state cookie, so calling it per render would overwrite the cookie and
   // desync it from an in-flight login's `state`.
   const { redirectOnUnauthenticated = false, redirectPath } = options ?? {};
+
+  useEffect(() => {
+    clearLegacyProfileCache();
+  }, []);
   const utils = trpc.useUtils();
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
@@ -51,10 +66,8 @@ export function useAuth(options?: UseAuthOptions) {
   }, [logoutMutation, utils]);
 
   const state = useMemo(() => {
-    localStorage.setItem(
-      "manus-runtime-user-info",
-      JSON.stringify(meQuery.data)
-    );
+    // Authentication state is transient. Never persist profile data in
+    // localStorage: it survives logout and can throw in restricted browsers.
     return {
       user: meQuery.data ?? null,
       loading: meQuery.isLoading || logoutMutation.isPending,

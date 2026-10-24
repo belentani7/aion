@@ -76,9 +76,9 @@
 
 /// <reference types="@types/google.maps" />
 
-import { useEffect, useRef } from "react";
-import { usePersistFn } from "@/hooks/usePersistFn";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { getGoogleMapsScriptUrl } from "@/lib/google-maps-url";
 
 declare global {
   interface Window {
@@ -86,27 +86,41 @@ declare global {
   }
 }
 
-const API_KEY = import.meta.env.VITE_FRONTEND_FORGE_API_KEY;
-const FORGE_BASE_URL =
-  import.meta.env.VITE_FRONTEND_FORGE_API_URL ||
-  "https://forge.butterfly-effect.dev";
-const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
+// IMPORTANT: A VITE_* value is embedded in the public JavaScript bundle.
+// Only a separately provisioned Google Maps browser key, restricted by HTTP
+// referrer and to the required Maps API, may be configured here.
+// Never use BUILT_IN_FORGE_API_KEY or VITE_FRONTEND_FORGE_API_KEY.
+const BROWSER_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_BROWSER_KEY;
 
-function loadMapScript() {
-  return new Promise(resolve => {
+let mapsScriptLoading: Promise<void> | null = null;
+
+function loadMapsScript(): Promise<void> {
+  if (window.google?.maps?.Map) return Promise.resolve();
+  const scriptUrl = getGoogleMapsScriptUrl(BROWSER_MAPS_KEY);
+  if (!scriptUrl) return Promise.reject(new Error("Google Maps browser key not configured"));
+  if (mapsScriptLoading) return mapsScriptLoading;
+
+  mapsScriptLoading = new Promise<void>((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
+    script.src = scriptUrl;
     script.async = true;
-    script.crossOrigin = "anonymous";
     script.onload = () => {
-      resolve(null);
-      script.remove(); // Clean up immediately
+      script.remove();
+      if (!window.google?.maps?.Map) {
+        mapsScriptLoading = null;
+        reject(new Error("Google Maps script loaded without the Maps API"));
+        return;
+      }
+      resolve();
     };
     script.onerror = () => {
-      console.error("Failed to load Google Maps script");
+      script.remove();
+      mapsScriptLoading = null;
+      reject(new Error("Google Maps script could not be loaded"));
     };
     document.head.appendChild(script);
   });
+  return mapsScriptLoading;
 }
 
 interface MapViewProps {
@@ -123,33 +137,36 @@ export function MapView({
   onMapReady,
 }: MapViewProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<google.maps.Map | null>(null);
-
-  const init = usePersistFn(async () => {
-    await loadMapScript();
-    if (!mapContainer.current) {
-      console.error("Map container not found");
-      return;
-    }
-    map.current = new window.google.maps.Map(mapContainer.current, {
-      zoom: initialZoom,
-      center: initialCenter,
-      mapTypeControl: true,
-      fullscreenControl: true,
-      zoomControl: true,
-      streetViewControl: true,
-      mapId: "DEMO_MAP_ID",
-    });
-    if (onMapReady) {
-      onMapReady(map.current);
-    }
-  });
+  const [error, setError] = useState<string | null>(
+    BROWSER_MAPS_KEY?.trim() ? null : "Mapa no disponible: falta configurar una clave pública de Google Maps restringida."
+  );
 
   useEffect(() => {
-    init();
-  }, [init]);
+    let cancelled = false;
+    if (!BROWSER_MAPS_KEY?.trim()) return;
+    setError(null);
+    void loadMapsScript().then(() => {
+      if (cancelled || !mapContainer.current || !window.google?.maps?.Map) return;
+      const instance = new window.google.maps.Map(mapContainer.current, {
+        zoom: initialZoom,
+        center: { lat: initialCenter.lat, lng: initialCenter.lng },
+        mapTypeControl: true,
+        fullscreenControl: true,
+        zoomControl: true,
+        streetViewControl: true,
+        mapId: "DEMO_MAP_ID",
+      });
+      onMapReady?.(instance);
+    }).catch(() => {
+      if (!cancelled) setError("No se pudo cargar Google Maps. Comprueba la conexión y la configuración.");
+    });
+    return () => { cancelled = true; };
+  }, [initialCenter.lat, initialCenter.lng, initialZoom, onMapReady]);
 
   return (
-    <div ref={mapContainer} className={cn("w-full h-[500px]", className)} />
+    <div className={cn("w-full", className)}>
+      {error && <p role="status" className="p-4 text-sm">{error}</p>}
+      <div ref={mapContainer} aria-label="Mapa interactivo" className={cn("w-full h-[500px]", error && "hidden")} />
+    </div>
   );
 }
