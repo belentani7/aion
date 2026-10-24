@@ -8,7 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getLoginConfiguration, startLogin } from "@/const";
-import { Loader2, LogOut } from "lucide-react";
+import { Loader2, LogOut, ShieldCheck } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Home() {
   const { user, loading, isAuthenticated, logout } = useAuth();
@@ -71,6 +72,17 @@ export default function Home() {
               React 19 + Vite + tRPC + Drizzle is wired end to end. Use the
               component showcase route to review the available UI primitives.
             </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Validation catalogue</CardTitle>
+            <CardDescription>Inspect PVC-U risk profiles and registered public data sources. Their operational status is not independently verified.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild variant="outline">
+              <Link href="/validation"><ShieldCheck aria-hidden="true" className="mr-2 h-4 w-4" /> Open validation catalogue</Link>
+            </Button>
           </CardContent>
         </Card>
       </div>
