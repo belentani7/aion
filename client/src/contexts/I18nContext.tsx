@@ -12,16 +12,26 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('aion_lang');
-    if (saved && saved in translations) {
-      return saved as Language;
+    // Private browsing, SSR and privacy settings may deny storage access.
+    try {
+      const saved = typeof localStorage === 'undefined' ? null : localStorage.getItem('aion_lang');
+      if (saved && Object.prototype.hasOwnProperty.call(translations, saved)) {
+        return saved as Language;
+      }
+    } catch {
+      // Keep the UI usable even when localStorage throws SecurityError.
     }
     return 'es';
   });
 
   const setLanguage = (lang: Language) => {
+    if (!Object.prototype.hasOwnProperty.call(translations, lang)) return;
     setLanguageState(lang);
-    localStorage.setItem('aion_lang', lang);
+    try {
+      if (typeof localStorage !== 'undefined') localStorage.setItem('aion_lang', lang);
+    } catch {
+      // Language is still changed in React state when persistence is blocked.
+    }
     applyDocumentLocale(lang);
   };
 

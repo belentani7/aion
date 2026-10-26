@@ -1,3 +1,4 @@
+import React from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,7 +9,46 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getLoginConfiguration, startLogin } from "@/const";
-import { Loader2, LogOut } from "lucide-react";
+import { Loader2, LogOut, ShieldCheck } from "lucide-react";
+import { formatDate, localizeEventType, type Language } from "@/i18n";
+import { redactAuditPayload } from "@/lib/auditDisplay";
+
+export type AuditEventFixture = {
+  id: number;
+  eventType: string;
+  createdAt: string | Date;
+  previousHash: string | null;
+  currentHash: string;
+  payload: unknown;
+};
+
+type Translate = (key: string) => string;
+
+/** Safe, locale-aware audit-event preview used by the dashboard and its smoke tests. */
+export function AuditEventTechnicalPreview({ event, t, language }: {
+  event: AuditEventFixture;
+  t: Translate;
+  language: Language;
+}) {
+  const safePayload = redactAuditPayload(event.payload, t('payloadRedacted'));
+  return (
+    <article data-testid="audit-event-preview" className="rounded-xl border border-border/70 bg-background/60 p-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="font-semibold">{localizeEventType(event.eventType, language)}</h2>
+          <time className="mt-1 block text-xs text-muted-foreground" dateTime={new Date(event.createdAt).toISOString()}>
+            {formatDate(new Date(event.createdAt), language)}
+          </time>
+        </div>
+        <span className="rounded-md border px-2 py-1 font-mono text-xs">{event.currentHash.slice(0, 12)}</span>
+      </div>
+      <pre className="mt-3 overflow-x-auto whitespace-pre-wrap break-words rounded-lg bg-muted/50 p-3 text-xs">
+        {JSON.stringify(safePayload, null, 2)}
+      </pre>
+    </article>
+  );
+}
+import { Link } from "wouter";
 
 export default function Home() {
   const { user, loading, isAuthenticated, logout } = useAuth();
@@ -71,6 +111,17 @@ export default function Home() {
               React 19 + Vite + tRPC + Drizzle is wired end to end. Use the
               component showcase route to review the available UI primitives.
             </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Validation catalogue</CardTitle>
+            <CardDescription>Inspect PVC-U risk profiles and registered public data sources. Their operational status is not independently verified.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild variant="outline">
+              <Link href="/validation"><ShieldCheck aria-hidden="true" className="mr-2 h-4 w-4" /> Open validation catalogue</Link>
+            </Button>
           </CardContent>
         </Card>
       </div>

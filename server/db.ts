@@ -99,3 +99,25 @@ export async function deleteProjectData(projectId: number): Promise<void> {
   }
   clearProjectFromMemory(projectId);
 }
+
+export async function insertAndFetch<TTable extends Record<string, any>>(
+  db: any,
+  table: TTable,
+  idColumn: any,
+  values: Record<string, unknown>,
+) {
+  const [{ id }] = await db.insert(table).values(values).$returningId();
+  const [row] = await db.select().from(table).where(eq(idColumn, id)).limit(1);
+  return row;
+}
+
+export async function updateAndFetch(
+  db: any,
+  table: any,
+  whereClause: any,
+  values: Record<string, unknown>,
+) {
+  await db.update(table).set(values).where(whereClause);
+  const [row] = await db.select().from(table).where(whereClause).limit(1);
+  return row;
+}
