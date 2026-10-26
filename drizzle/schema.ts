@@ -36,6 +36,7 @@ export const eventTypeEnum = mysqlEnum("eventType", [
   "plan_updated",
   "collective_agreement_created",
   "absence_recorded",
+  "shifts_auto_assigned",
 ]);
 
 export const users = mysqlTable("users", {
