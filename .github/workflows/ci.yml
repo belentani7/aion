@@ -25,6 +25,8 @@ jobs:
         run: npm ci --ignore-scripts --legacy-peer-deps
       - name: Prevent silent CI bypasses
         run: node --test validation/ci-gates.test.mjs
+      - name: OAuth persistence regression
+        run: node --test validation/db-upsert.test.mjs
       - name: Typecheck
         run: npm run check
       - name: Tests

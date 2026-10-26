@@ -43,8 +43,9 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) throw new Error("User openId is required for upsert");
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot upsert user: database not available");
-    return;
+    // OAuth must never mint a session for an identity that was not persisted.
+    // The callback catches this error and refuses to set the session cookie.
+    throw new Error("Database unavailable: cannot persist authenticated user");
   }
 
   const values: InsertUser = { openId: user.openId };
