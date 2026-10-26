@@ -1,4 +1,5 @@
 import { desc, eq } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
 import { COOKIE_NAME } from "@shared/const";
 import { payrollEntries } from "../drizzle/schema";
 import { aionRouter } from "./aion/router";
@@ -34,6 +35,12 @@ export const appRouter = router({
 
   payroll: router({
     csv: protectedProcedure.query(async ({ ctx }) => {
+      if (process.env.PAYROLL_EXPORT_ENABLED !== "true") {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "Payroll CSV is disabled until its database migration is applied and verified.",
+        });
+      }
       const access = await resolveTenantAccess(ctx.user);
       requireRole(access, "manager");
       requirePlanCapability(access.tenant.plan, "auditExport", "La exportación CSV requiere un plan Pro o Enterprise.");
