@@ -29,7 +29,7 @@ export function AuditEventTechnicalPreview({ event, t, language }: {
   t: Translate;
   language: Language;
 }) {
-  const safePayload = redactAuditPayload(event.payload, t("payloadRedacted"));
+  const safePayload = redactAuditPayload(event.payload, t('payloadRedacted'));
   return (
     <article data-testid="audit-event-preview" className="rounded-xl border border-border/70 bg-background/60 p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
