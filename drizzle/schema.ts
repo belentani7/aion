@@ -363,13 +363,19 @@ export const aionExecutions = mysqlTable("aion_executions", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
-export const aionMemory = mysqlTable("aion_memory", {
-  id: int("id").autoincrement().primaryKey(),
-  projectId: int("projectId").notNull(),
-  memoryKey: varchar("memoryKey", { length: 191 }).notNull(),
-  value: text("value"),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+export const aionMemory = mysqlTable(
+  "aion_memory",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    projectId: int("projectId").notNull(),
+    memoryKey: varchar("memoryKey", { length: 191 }).notNull(),
+    value: text("value"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  (table) => ({
+    projectKeyUnique: uniqueIndex("aion_memory_project_key").on(table.projectId, table.memoryKey),
+  }),
+);
 
 export type AionProject = typeof aionProjects.$inferSelect;
 export type InsertAionProject = typeof aionProjects.$inferInsert;
