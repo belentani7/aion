@@ -8,7 +8,7 @@
 - Repositorio: https://github.com/belentani7/aion
 - ID observado: 1380543886
 - Rama predeterminada: main
-- Visibilidad: privada
+- Visibilidad actual: **pública** (GitHub API, 2026-10-27; el registro anterior de privacidad quedó obsoleto)
 - Archivado: no
 - Tamaño reportado por GitHub: 1.414 KB
 - Rol provisional: producto/candidato de integración; no declarar canónico respecto a toda la familia Aion sin comparar las variantes.
@@ -55,6 +55,6 @@
 3. Ejecutar check, test y build; guardar logs saneados.
 4. Ejecutar secret scan sobre el historial con salida saneada.
 5. Validar despliegue/health si existe un entorno activo.
-6. Abrir un PR de reparación separado; mantener NO RELEASE hasta que los controles aplicables pasen.
+6. Continuar en la PR #8 existente, sin duplicarla; mantener NO RELEASE hasta que los controles aplicables pasen.
 
-**Resultado global:** BLOCKED / NOT RELEASE. Solo se ha completado inspección de metadata y archivos de texto.
+**Resultado global:** BLOCKED / NOT RELEASE. Esta línea base es histórica: las pruebas aisladas de CI no acreditan una suite completa ni un despliegue. GitHub informa actualmente visibilidad pública; revisar exposición y permisos antes de publicar cualquier contenido adicional.
