@@ -117,3 +117,25 @@ test('project deletion clears ephemeral store without database', async () => {
   await db.deleteProjectData(17);
   assert.deepEqual(cleared, [17]);
 });
+
+test('project deletion refuses success when configured database pool cannot initialize', async () => {
+  let cleared = false;
+  const db = loadDb({
+    env: { DATABASE_URL: 'mysql://test.invalid/db' },
+    createPool: () => { throw new Error('offline'); },
+    clearProjectFromMemory: () => { cleared = true; },
+  });
+  await assert.rejects(db.deleteProjectData(17), /database.*unavailable.*delete/i);
+  assert.equal(cleared, false, 'memory must remain intact when persistent deletion did not run');
+});
+
+test('project deletion refuses success when ORM initialization fails', async () => {
+  let cleared = false;
+  const db = loadDb({
+    env: { DATABASE_URL: 'mysql://test.invalid/db' },
+    drizzle: () => { throw new Error('ORM offline'); },
+    clearProjectFromMemory: () => { cleared = true; },
+  });
+  await assert.rejects(db.deleteProjectData(17), /database.*unavailable.*delete/i);
+  assert.equal(cleared, false);
+});

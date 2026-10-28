@@ -88,6 +88,11 @@ export async function getUserByOpenId(openId: string) {
  */
 export async function deleteProjectData(projectId: number): Promise<void> {
   const db = await getDb();
+  // A configured database that failed to initialize is NOT an ephemeral store.
+  // Returning success here would leave persistent project data undeleted.
+  if (!db && process.env.DATABASE_URL) {
+    throw new Error("Database unavailable: cannot delete persistent project data");
+  }
   if (db) {
     // A failed delete must roll back the entire project, not leave a partial
     // graph behind while reporting success to the caller.
