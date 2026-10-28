@@ -89,14 +89,14 @@ export async function getUserByOpenId(openId: string) {
 export async function deleteProjectData(projectId: number): Promise<void> {
   const db = await getDb();
   if (db) {
-    try {
-      await db.delete(aionTasks).where(eq(aionTasks.projectId, projectId));
-      await db.delete(aionExecutions).where(eq(aionExecutions.projectId, projectId));
-      await db.delete(aionMemory).where(eq(aionMemory.projectId, projectId));
-      await db.delete(aionProjects).where(eq(aionProjects.id, projectId));
-    } catch (error) {
-      console.warn("[AION] deleteProjectData: database cleanup failed:", error);
-    }
+    // A failed delete must roll back the entire project, not leave a partial
+    // graph behind while reporting success to the caller.
+    await db.transaction(async (tx: typeof db) => {
+      await tx.delete(aionTasks).where(eq(aionTasks.projectId, projectId));
+      await tx.delete(aionExecutions).where(eq(aionExecutions.projectId, projectId));
+      await tx.delete(aionMemory).where(eq(aionMemory.projectId, projectId));
+      await tx.delete(aionProjects).where(eq(aionProjects.id, projectId));
+    });
   }
   clearProjectFromMemory(projectId);
 }
